@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -26,9 +27,17 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		provider.setUserDetailsService(service);
 		provider.setPasswordEncoder(new BCryptPasswordEncoder());
+		
 		return provider;
 		
 	}
+	
+    @Bean
+    public AuthenticationFailureHandler authenticationFailureHandler() {
+    	
+        return new CustomAuthenticationFailureHandler();
+        
+    }
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -37,12 +46,13 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		.csrf()
 		.disable()
 		.authorizeRequests()
-		.antMatchers("/")
+		.antMatchers("/loginError")
 		.permitAll()
 		.anyRequest()
 		.authenticated()
 		.and()
 		.formLogin()
+		.failureHandler(authenticationFailureHandler())
 		.loginPage("/login")
 		.defaultSuccessUrl("/welcome",true)
 		.permitAll()
@@ -53,5 +63,6 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 		.logoutSuccessUrl("/")
 		.permitAll();
-	}
+		
+	}	
 }

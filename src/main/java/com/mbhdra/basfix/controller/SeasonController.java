@@ -15,30 +15,30 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.mbhdra.basfix.model.SystemUser;
-import com.mbhdra.basfix.service.SystemUserService;
+import com.mbhdra.basfix.service.SeasonService;
 
 @Controller
-public class SystemUserController {
+public class SeasonController {
 	
 	@Autowired
-	SystemUserService service;
+	SeasonService service;
 	
-	// Add new user to the system
-	@RequestMapping(value="addUser", method=RequestMethod.POST)
-	public RedirectView addUserPost (SystemUser user, RedirectAttributes ra) {
-			
-		RedirectView rv = new RedirectView("addUser", true);
-		service.addUser(user);
-		ra.addFlashAttribute("feedback", "User saved.");
+	@RequestMapping(value="addSeason", method=RequestMethod.POST)
+	public RedirectView addSeasonPost (HttpServletRequest req, RedirectAttributes ra) {
+		
+		String startingYear = req.getParameter("startingYear");
+		String endingYear = req.getParameter("endingYear");
+		RedirectView rv = new RedirectView("addSeason", true);
+		service.addSeason(startingYear, endingYear);
+		ra.addFlashAttribute("feedback", "Season created.");
 		
 		return rv;
 		
 	}
 	
 	// PRG pattern completion to prevent double form submission
-	@RequestMapping(value="addUser", method=RequestMethod.GET)
-	public ModelAndView addUser (HttpServletRequest req) {
+	@RequestMapping(value="addSeason", method=RequestMethod.GET)
+	public ModelAndView addSeason (HttpServletRequest req) {
 		
 		Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(req);
 		String feedback = null;
@@ -49,7 +49,7 @@ public class SystemUserController {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("feedback", feedback);
-		mv.setViewName("addUserPage");
+		mv.setViewName("addSeasonPage");
 			
 		return mv;
 		
@@ -58,11 +58,11 @@ public class SystemUserController {
 	@ExceptionHandler({SQLException.class})
 	public RedirectView databaseError(SQLException ex, RedirectAttributes ra) {
 		
-		RedirectView rv = new RedirectView("addUser", true);
+		RedirectView rv = new RedirectView("addSeason", true);
 		
-		// In case a user exist with the same username
+		// In case a season exist with the same name
 		if (ex.getSQLState().equalsIgnoreCase("23505")) {
-			ra.addFlashAttribute("feedback", "A user exists with same username. Please add a user with different username.");
+			ra.addFlashAttribute("feedback", "A season exists with same starting and ending years. Please add a season with different starting and ending years.");
 		}
 		
 		return rv;

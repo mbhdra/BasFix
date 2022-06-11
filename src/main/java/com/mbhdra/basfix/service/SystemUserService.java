@@ -15,13 +15,14 @@ public class SystemUserService {
 	@Autowired
 	SystemUserDao dao;
 	
-	public void addUser (SystemUser user) {
+	public void addUser (SystemUser user)  {
 		
 		// bcrypt password and save user
 		int strength = 12; // work factor of bcrypt
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(strength, new SecureRandom());
 		user.setUpass(bCryptPasswordEncoder.encode(user.getUpass()));
-		SystemUser saved = dao.save(user);
-	
+		
+		dao.save(user);
+		
 	}
 }
