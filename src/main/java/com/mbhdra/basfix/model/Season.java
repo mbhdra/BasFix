@@ -6,12 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
 @Entity
-@Component
-@Scope(value="prototype")
 public class Season {
 	
 	@Id
@@ -39,5 +34,10 @@ public class Season {
 
 	public void setseasonName(String seasonName) {
 		this.seasonName = seasonName;
+	}
+
+	@Override
+	public String toString() {
+		return "Season [seasonId=" + seasonId + ", seasonName=" + seasonName + "]";
 	}
 }

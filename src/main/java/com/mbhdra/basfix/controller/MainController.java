@@ -59,20 +59,6 @@ public class MainController {
 		
 	}
 	
-	@RequestMapping("addUserPage")
-	public String openAddUserPage() {
-		
-		return "addUserPage";
-		
-	}
-	
-	@RequestMapping("addSeasonPage")
-	public String openAddSeasonPage() {
-		
-		return "addSeasonPage";
-		
-	}
-	
 	// handle login failure
 	@RequestMapping(value="loginError", method=RequestMethod.POST)
 	public RedirectView loginError(RedirectAttributes ra) {

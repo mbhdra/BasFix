@@ -31,30 +31,16 @@
     </nav>
 
     <br><br><br><br><br><br>
-    <form action="addUser" method="post">
+    <form action="addDivision" method="post">
       <div class="row justify-content-center ">
         <div class="col-4 border p-3 bg-light">
 
           <div class="form-group pb-3">
-            <label for="username1">Username:</label>
-            <input type="text" name="uname" class="form-control" id="username1" placeholder="Username" required pattern="^[a-z0-9]+$" title="Must include at least one alphanumerical character. Only English and lowercase letters are accepted.">
+            <label for="divisionName">Division Name:</label>
+            <input type="text" name="divisionName" class="form-control" id="divisionName" placeholder="Division Name" required>
           </div>
 
-          <div class="form-group pb-3">
-            <label for="password1">Password:</label>
-            <input type="password" name="upass" class="form-control" id="password1" placeholder="Password" required
-            pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[-+*.!@$%&(){}\[\]:;<>,?\\/_=|]).{8,32}$" title="Must include at least one uppercase English letter, one lowercase English letter, and one special character. Length must be between 8 and 32.">
-          </div>
-
-          <div class="form-group pb-3">
-            <label for="role1">Role:</label>
-            <select class="form-select" name="urole">
-        	  <c:forEach items="${userRoles}" var="userRole">
-                <option value="${userRole.roleId}">${fn:toUpperCase(fn:substring(userRole.roleName, 0, 1))}${fn:toLowerCase(fn:substring(userRole.roleName, 1,fn:length(userRole.roleName)))}</option>
-              </c:forEach>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary">Add User</button>
+          <button type="submit" class="btn btn-primary">Add Division</button>
         </div>
       </div>
     </form>

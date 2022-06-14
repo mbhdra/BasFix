@@ -35,8 +35,17 @@
           <form class="form-group" action="addUserPage">
             <button type="submit" class="btn btn-primary">Add User</button>
           </form>
-          <form class="form-group" action="addSeasonPage"><br>
+          <br>
+          <form class="form-group" action="addSeasonPage">
             <button type="submit" class="btn btn-primary">Add Season</button>
+          </form>
+          <br>
+          <form class="form-group" action="addDivisionPage">
+            <button type="submit" class="btn btn-primary">Add Division</button>
+          </form>
+          <br>
+          <form class="form-group" action="addLeaguePage">
+            <button type="submit" class="btn btn-primary">Add League</button>
           </form>
         </div>
       </div>

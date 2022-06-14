@@ -13,7 +13,7 @@ import com.mbhdra.basfix.model.SystemUser;
 public class SystemUserService {
 
 	@Autowired
-	SystemUserDao dao;
+	private SystemUserDao systemUserDao;
 	
 	public void addUser (SystemUser user)  {
 		
@@ -22,7 +22,7 @@ public class SystemUserService {
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(strength, new SecureRandom());
 		user.setUpass(bCryptPasswordEncoder.encode(user.getUpass()));
 		
-		dao.save(user);
+		systemUserDao.save(user);
 		
 	}
 }

@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -31,30 +32,38 @@
     </nav>
 
     <br><br><br><br><br><br>
-    <form action="addUser" method="post">
+    <form action="addLeague" method="post">
       <div class="row justify-content-center ">
         <div class="col-4 border p-3 bg-light">
-
+          
           <div class="form-group pb-3">
-            <label for="username1">Username:</label>
-            <input type="text" name="uname" class="form-control" id="username1" placeholder="Username" required pattern="^[a-z0-9]+$" title="Must include at least one alphanumerical character. Only English and lowercase letters are accepted.">
-          </div>
-
-          <div class="form-group pb-3">
-            <label for="password1">Password:</label>
-            <input type="password" name="upass" class="form-control" id="password1" placeholder="Password" required
-            pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[-+*.!@$%&(){}\[\]:;<>,?\\/_=|]).{8,32}$" title="Must include at least one uppercase English letter, one lowercase English letter, and one special character. Length must be between 8 and 32.">
-          </div>
-
-          <div class="form-group pb-3">
-            <label for="role1">Role:</label>
-            <select class="form-select" name="urole">
-        	  <c:forEach items="${userRoles}" var="userRole">
-                <option value="${userRole.roleId}">${fn:toUpperCase(fn:substring(userRole.roleName, 0, 1))}${fn:toLowerCase(fn:substring(userRole.roleName, 1,fn:length(userRole.roleName)))}</option>
+            <label for="role1">Select Season:</label>
+            <select class="form-select" name="season">
+        	  <c:forEach items="${seasons}" var="season">
+                <option value="${season.seasonId}">${season.seasonName}</option>
               </c:forEach>
             </select>
           </div>
-          <button type="submit" class="btn btn-primary">Add User</button>
+          
+          <div class="form-group pb-3">
+            <label for="role1">Select Division:</label>
+            <select class="form-select" name="division">
+        	  <c:forEach items="${divisions}" var="division">
+                <option value="${division.divisionId}">${division.divisionName}</option>
+              </c:forEach>
+            </select>
+          </div>
+          
+          <div class="form-group pb-3">
+            <label for="role1">Select Gender:</label>
+            <select class="form-select" name="gender">
+        	  <c:forEach items="${genders}" var="gender">
+                <option value="${gender.genderId}">${fn:toUpperCase(fn:substring(gender.genderName, 0, 1))}${fn:toLowerCase(fn:substring(gender.genderName, 1,fn:length(gender.genderName)))}</option>
+              </c:forEach>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Add League</button>
         </div>
       </div>
     </form>
@@ -77,7 +86,7 @@
 	</div>
 
     <% if (request.getAttribute("feedback") != null){ %>
-    	<script type="text/javascript"> $(document).ready(function(){ $('#exampleModal').modal('show'); }); </script> 
+    	<script type="text/javascript"> $(document).ready(function(){ $('#exampleModal').modal('show'); }); </script>
     <%	} %>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

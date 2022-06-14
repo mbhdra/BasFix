@@ -1,6 +1,7 @@
 package com.mbhdra.basfix.controller;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,20 +17,37 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.mbhdra.basfix.model.SystemUser;
+import com.mbhdra.basfix.model.UserRole;
 import com.mbhdra.basfix.service.SystemUserService;
+import com.mbhdra.basfix.service.UserRoleService;
 
 @Controller
 public class SystemUserController {
 	
 	@Autowired
-	SystemUserService service;
+	private SystemUserService systemUserservice;
+	
+	@Autowired
+	private UserRoleService userRoleService;
+	
+	@RequestMapping("addUserPage")
+	public ModelAndView openAddUserPage() {
+		
+		ModelAndView mv = new ModelAndView();
+		List<UserRole> userRoles = userRoleService.findAllUserRoles();
+		mv.addObject("userRoles", userRoles);
+		mv.setViewName("addUserPage");		
+		
+		return mv;
+		
+	}
 	
 	// Add new user to the system
 	@RequestMapping(value="addUser", method=RequestMethod.POST)
 	public RedirectView addUserPost (SystemUser user, RedirectAttributes ra) {
 			
 		RedirectView rv = new RedirectView("addUser", true);
-		service.addUser(user);
+		systemUserservice.addUser(user);
 		ra.addFlashAttribute("feedback", "User saved.");
 		
 		return rv;
@@ -48,6 +66,8 @@ public class SystemUserController {
 		}
 		
 		ModelAndView mv = new ModelAndView();
+		List<UserRole> userRoles = userRoleService.findAllUserRoles();
+		mv.addObject("userRoles", userRoles);
 		mv.addObject("feedback", feedback);
 		mv.setViewName("addUserPage");
 			

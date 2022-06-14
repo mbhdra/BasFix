@@ -15,21 +15,27 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.mbhdra.basfix.exception.InvalidSeasonException;
 import com.mbhdra.basfix.service.SeasonService;
 
 @Controller
 public class SeasonController {
 	
 	@Autowired
-	SeasonService service;
+	private SeasonService seasonService;
+	
+	@RequestMapping("addSeasonPage")
+	public String openAddSeasonPage() {
+		
+		return "addSeasonPage";
+		
+	}
 	
 	@RequestMapping(value="addSeason", method=RequestMethod.POST)
-	public RedirectView addSeasonPost (HttpServletRequest req, RedirectAttributes ra) {
+	public RedirectView addSeasonPost (HttpServletRequest req, RedirectAttributes ra) throws InvalidSeasonException {
 		
-		String startingYear = req.getParameter("startingYear");
-		String endingYear = req.getParameter("endingYear");
 		RedirectView rv = new RedirectView("addSeason", true);
-		service.addSeason(startingYear, endingYear);
+		seasonService.addSeason(req);
 		ra.addFlashAttribute("feedback", "Season created.");
 		
 		return rv;
@@ -65,6 +71,17 @@ public class SeasonController {
 			ra.addFlashAttribute("feedback", "A season exists with same starting and ending years. Please add a season with different starting and ending years.");
 		}
 		
+		return rv;
+		
+	}
+	
+	// Ending year must be bigger than starting year and the difference between them must be 1.
+	@ExceptionHandler({InvalidSeasonException.class})
+	public RedirectView invalidSeason(InvalidSeasonException ex, RedirectAttributes ra) {
+		
+		RedirectView rv = new RedirectView("addSeason", true);
+		ra.addFlashAttribute("feedback", ex.getMessage());
+
 		return rv;
 		
 	}
