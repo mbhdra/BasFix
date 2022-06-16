@@ -18,13 +18,13 @@ public class SeasonService {
 	@Autowired
 	private SeasonDao dao;
 	
-	public void addSeason(HttpServletRequest req) throws InvalidSeasonException {
+	public void addSeason(HttpServletRequest req, Season season) throws InvalidSeasonException {
 		
 		String seasonName = "";
-		Season season = new Season();
 		String startingYear = req.getParameter("startingYear");
 		String endingYear = req.getParameter("endingYear");
 		
+		// ending year must be bigger than starting year and the difference must be 1.
 		if(Integer.parseInt(endingYear) - Integer.parseInt(startingYear) != 1)
 			throw new InvalidSeasonException();
 		

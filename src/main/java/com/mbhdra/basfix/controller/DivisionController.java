@@ -34,8 +34,7 @@ public class DivisionController {
 	// Add new division to the system
 	@RequestMapping(value="addDivision", method=RequestMethod.POST)
 	public RedirectView addDivisionPost (Division division, RedirectAttributes ra) {
-			
-		
+
 		RedirectView rv = new RedirectView("addDivision", true);
 		divisionService.addDivision(division);
 		ra.addFlashAttribute("feedback", "Division created.");

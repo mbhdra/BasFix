@@ -16,6 +16,7 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.mbhdra.basfix.exception.InvalidSeasonException;
+import com.mbhdra.basfix.model.Season;
 import com.mbhdra.basfix.service.SeasonService;
 
 @Controller
@@ -35,7 +36,7 @@ public class SeasonController {
 	public RedirectView addSeasonPost (HttpServletRequest req, RedirectAttributes ra) throws InvalidSeasonException {
 		
 		RedirectView rv = new RedirectView("addSeason", true);
-		seasonService.addSeason(req);
+		seasonService.addSeason(req, new Season());
 		ra.addFlashAttribute("feedback", "Season created.");
 		
 		return rv;

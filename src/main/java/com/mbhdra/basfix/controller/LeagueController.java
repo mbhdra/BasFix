@@ -18,6 +18,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.mbhdra.basfix.model.Division;
 import com.mbhdra.basfix.model.Gender;
+import com.mbhdra.basfix.model.League;
 import com.mbhdra.basfix.model.Season;
 import com.mbhdra.basfix.service.LeagueService;
 import com.mbhdra.basfix.service.DivisionService;
@@ -59,7 +60,7 @@ public class LeagueController {
 	public RedirectView addLeaguePost (HttpServletRequest req, RedirectAttributes ra){
 			
 		RedirectView rv = new RedirectView("addLeague", true);
-		leagueService.addLeague(req);
+		leagueService.addLeague(req, new League());
 		ra.addFlashAttribute("feedback", "League created.");
 		
 		return rv;
@@ -96,7 +97,7 @@ public class LeagueController {
 		
 		RedirectView rv = new RedirectView("addLeague", true);
 		
-		// In case a user exist with the same username
+		// In case a league exist with the same league name
 		if (ex.getSQLState().equalsIgnoreCase("23505")) {
 			ra.addFlashAttribute("feedback", "A league exists with same season, division, and gender. Please add a league with different information.");
 		}

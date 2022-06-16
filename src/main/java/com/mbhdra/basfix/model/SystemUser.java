@@ -11,14 +11,10 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Component
-@Scope(value="prototype")
 public class SystemUser {
 
 	@Id
@@ -34,9 +30,7 @@ public class SystemUser {
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "role_id", nullable = false)
 	@OnDelete(action = OnDeleteAction.NO_ACTION)
-	@JsonIgnore
 	private UserRole urole;
-	
 	
 	public SystemUser() {	
 		super();

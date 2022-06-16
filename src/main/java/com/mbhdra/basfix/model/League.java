@@ -11,19 +11,15 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Component
-@Scope(value="prototype")
 public class League {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int uid;
+	private int leagueId;
 	
 	@Column(unique = true, nullable = false)
 	private String leagueName;
@@ -31,31 +27,28 @@ public class League {
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "season_id", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JsonIgnore
 	private Season season;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "division_id", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JsonIgnore
 	private Division division;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "gender_id", nullable = false)
 	@OnDelete(action = OnDeleteAction.NO_ACTION)
-	@JsonIgnore
 	private Gender gender;
 
 	public League() {
 		super();
 	}
 
-	public int getUid() {
-		return uid;
+	public int getLeagueId() {
+		return leagueId;
 	}
 
-	public void setUid(int uid) {
-		this.uid = uid;
+	public void setLeagueId(int leagueId) {
+		this.leagueId = leagueId;
 	}
 
 	public String getLeagueName() {
@@ -92,7 +85,7 @@ public class League {
 
 	@Override
 	public String toString() {
-		return "League [uid=" + uid + ", leagueName=" + leagueName + ", season=" + season + ", division=" + division
+		return "League [leagueId=" + leagueId + ", leagueName=" + leagueName + ", season=" + season + ", division=" + division
 				+ ", gender=" + gender + "]";
 	}
 }
