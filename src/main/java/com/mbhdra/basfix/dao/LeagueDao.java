@@ -11,6 +11,6 @@ import com.mbhdra.basfix.model.League;
 @Repository
 public interface LeagueDao extends CrudRepository<League, Integer> {
 
-	@Query("from League where league_name=?1 and season_id=?2 and gender_id=?3")
-	List<League> checkLeague(String leagueName, int seasonId, int genderId);
+	@Query("from League where season_id=?1 and division_id=?2 and gender_id=?3")
+	List<League> checkLeague(int seasonId, int divisionId, int genderId);
 }

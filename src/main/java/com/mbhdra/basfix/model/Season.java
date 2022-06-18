@@ -23,6 +23,11 @@ public class Season {
 		super();
 	}
 
+	public Season(String seasonName) {
+		super();
+		this.seasonName = seasonName;
+	}
+
 	public int getSeasonId() {
 		return seasonId;
 	}

@@ -47,6 +47,10 @@
           <form class="form-group" action="addLeaguePage">
             <button type="submit" class="btn btn-primary">Add League</button>
           </form>
+          <br>
+          <form class="form-group" action="addClubPage">
+            <button type="submit" class="btn btn-primary">Add Club</button>
+          </form>
         </div>
       </div>
 

@@ -18,5 +18,14 @@ VALUES('1994-1995 Season');
 INSERT INTO season (season_name)
 VALUES('2021-2022 Season');
 
+INSERT INTO club (club_name)
+VALUES('Fenerbahçe');
+INSERT INTO club (club_name)
+VALUES('Anadolu Efes');
+INSERT INTO club (club_name)
+VALUES('Türk Telekom');
+INSERT INTO club (club_name)
+VALUES('Galatasaray');
+
 INSERT INTO system_user (uname, upass, role_id)
 VALUES('mbhdra','$2a$12$04Imudz0AEA8fOvWTttbSuj9EDo3PibOYzGqzjo7hojH/bvvthXi2', 1);

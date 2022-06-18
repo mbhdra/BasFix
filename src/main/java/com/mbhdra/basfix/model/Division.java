@@ -23,6 +23,11 @@ public class Division {
 		super();
 	}
 
+	public Division(String divisionName) {
+		super();
+		this.divisionName = divisionName;
+	}
+
 	public int getDivisionId() {
 		return divisionId;
 	}

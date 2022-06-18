@@ -60,7 +60,7 @@ public class LeagueController {
 	public RedirectView addLeaguePost (HttpServletRequest req, RedirectAttributes ra){
 			
 		RedirectView rv = new RedirectView("addLeague", true);
-		leagueService.addLeague(req, new League());
+		leagueService.addLeague(req, new League("", new Season(), new Division(), new Gender()));
 		ra.addFlashAttribute("feedback", "League created.");
 		
 		return rv;

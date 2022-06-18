@@ -26,12 +26,12 @@ public class League {
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "season_id", nullable = false)
-	@OnDelete(action = OnDeleteAction.CASCADE)
+	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	private Season season;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "division_id", nullable = false)
-	@OnDelete(action = OnDeleteAction.CASCADE)
+	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	private Division division;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -41,6 +41,14 @@ public class League {
 
 	public League() {
 		super();
+	}
+	
+	public League(String leagueName, Season season, Division division, Gender gender) {
+		super();
+		this.leagueName = leagueName;
+		this.season = season;
+		this.division = division;
+		this.gender = gender;
 	}
 
 	public int getLeagueId() {

@@ -36,6 +36,13 @@ public class SystemUser {
 		super();
 	}
 
+	public SystemUser(String uname, String upass, UserRole urole) {
+		super();
+		this.uname = uname;
+		this.upass = upass;
+		this.urole = urole;
+	}
+
 	public int getUid() {
 		return uid;	
 	}

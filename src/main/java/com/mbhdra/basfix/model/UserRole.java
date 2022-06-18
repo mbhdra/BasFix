@@ -23,6 +23,11 @@ public class UserRole {
 		super();
 	}
 
+	public UserRole(String roleName) {
+		super();
+		this.roleName = roleName;
+	}
+
 	public int getRoleId() {
 		return roleId;
 	}
