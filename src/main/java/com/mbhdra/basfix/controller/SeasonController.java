@@ -36,7 +36,7 @@ public class SeasonController {
 	public RedirectView addSeasonPost (HttpServletRequest req, RedirectAttributes ra) throws InvalidSeasonException {
 		
 		RedirectView rv = new RedirectView("addSeason", true);
-		seasonService.addSeason(req, new Season(""));
+		seasonService.addSeason(req, new Season());
 		ra.addFlashAttribute("feedback", "Season created.");
 		
 		return rv;

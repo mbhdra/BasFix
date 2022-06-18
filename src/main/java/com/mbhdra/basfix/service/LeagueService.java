@@ -26,7 +26,7 @@ public class LeagueService {
 	@Autowired
 	private GenderDao genderDao;
 	
-	public void addLeague (HttpServletRequest req, League league)  {
+	public void addLeague(HttpServletRequest req, League league)  {
 		
 		String leagueName = "";
 		

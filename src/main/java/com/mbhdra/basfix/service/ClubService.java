@@ -42,5 +42,4 @@ public class ClubService {
 		return clubList;
 		
 	}
-
 }

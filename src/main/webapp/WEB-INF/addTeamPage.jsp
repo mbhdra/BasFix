@@ -32,15 +32,15 @@
     </nav>
 
     <br><br><br><br><br><br>
-    <form action="addLeague" method="post">
+    <form action="addTeam" method="post">
       <div class="row justify-content-center ">
         <div class="col-4 border p-3 bg-light">
           
           <div class="form-group pb-3">
-            <label for="season">Select Season:</label>
-            <select class="form-select" name="season">
-        	  <c:forEach items="${seasons}" var="season">
-                <option value="${season.seasonId}">${season.seasonName}</option>
+            <label for="club">Select Club:</label>
+            <select class="form-select" name="club">
+        	  <c:forEach items="${clubs}" var="club">
+                <option value="${club.clubId}">${club.clubName}</option>
               </c:forEach>
             </select>
           </div>
@@ -62,8 +62,8 @@
               </c:forEach>
             </select>
           </div>
-
-          <button type="submit" class="btn btn-primary">Add League</button>
+          
+          <button type="submit" class="btn btn-primary">Add Team</button>
         </div>
       </div>
     </form>
