@@ -42,9 +42,10 @@ public class League {
 	public League() {
 		super();
 	}
-	
-	public League(String leagueName, Season season, Division division, Gender gender) {
+
+	public League(int leagueId, String leagueName, Season season, Division division, Gender gender) {
 		super();
+		this.leagueId = leagueId;
 		this.leagueName = leagueName;
 		this.season = season;
 		this.division = division;
@@ -93,7 +94,7 @@ public class League {
 
 	@Override
 	public String toString() {
-		return "League [leagueId=" + leagueId + ", leagueName=" + leagueName + ", season=" + season + ", division=" + division
-				+ ", gender=" + gender + "]";
+		return "League [leagueId=" + leagueId + ", leagueName=" + leagueName + ", season=" + season + ", division="
+				+ division + ", gender=" + gender + "]";
 	}
 }

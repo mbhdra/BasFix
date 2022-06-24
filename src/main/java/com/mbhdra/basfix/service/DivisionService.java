@@ -15,7 +15,7 @@ public class DivisionService {
 	@Autowired
 	private DivisionDao divisionDao;
 	
-	public void addDivision(Division division)  {
+	public void addDivision(Division division) {
 		
 		// Capitalize each word of the division name
 		String finalDivisionName = "";

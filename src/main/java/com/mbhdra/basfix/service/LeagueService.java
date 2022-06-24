@@ -1,5 +1,8 @@
 package com.mbhdra.basfix.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +29,7 @@ public class LeagueService {
 	@Autowired
 	private GenderDao genderDao;
 	
-	public void addLeague(HttpServletRequest req, League league)  {
+	public int addLeague(HttpServletRequest req, League league) {
 		
 		String leagueName = "";
 		
@@ -42,6 +45,20 @@ public class LeagueService {
 					 league.getGender().getGenderName().substring(0,1).toUpperCase() + league.getGender().getGenderName().substring(1) + " League";
 		league.setLeagueName(leagueName);
 		leagueDao.save(league);
+		
+		return league.getLeagueId();
+		
+	}
+	
+	public List<League> findAllLeagues() {
+		
+		Iterable<League> leagues =  leagueDao.findAll();
+		List<League> leagueList = new ArrayList<League>();
+		
+		for (League l : leagues)
+			leagueList.add(l);
+		
+		return leagueList;
 		
 	}
 }

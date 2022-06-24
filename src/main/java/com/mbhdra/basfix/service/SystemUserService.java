@@ -15,7 +15,7 @@ public class SystemUserService {
 	@Autowired
 	private SystemUserDao systemUserDao;
 	
-	public void addUser (SystemUser user)  {
+	public void addUser (SystemUser user) {
 		
 		// bcrypt password and save user
 		int strength = 12; // work factor of bcrypt

@@ -68,15 +68,32 @@
       </div>
     </form>
 
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
   	  <div class="modal-dialog">
     	<div class="modal-content">
       	  <div class="modal-header">
-        	<h5 class="modal-title" id="exampleModalLabel">Feedback</h5>
+        	<h5 class="modal-title" id="successModalLabel">Feedback</h5>
         	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       	  </div>
       	  <div class="modal-body">
-          	${feedback}
+          	${successFeedback}
+      	  </div>
+      	  <div class="modal-footer">
+        	<button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+      	  </div>
+    	</div>
+  	  </div>
+	</div>
+	
+	<div class="modal fade" id="failureModal" tabindex="-1" aria-labelledby="failureModalLabel" aria-hidden="true">
+  	  <div class="modal-dialog">
+    	<div class="modal-content">
+      	  <div class="modal-header">
+        	<h5 class="modal-title" id="failureModalLabel">Feedback</h5>
+        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      	  </div>
+      	  <div class="modal-body">
+          	${failureFeedback}
       	  </div>
       	  <div class="modal-footer">
         	<button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
@@ -85,9 +102,13 @@
   	  </div>
 	</div>
 
-    <% if (request.getAttribute("feedback") != null){ %>
-    	<script type="text/javascript"> $(document).ready(function(){ $('#exampleModal').modal('show'); }); </script>
+    <% if (request.getAttribute("successFeedback") != null){ %>
+    	<script type="text/javascript"> $(document).ready(function(){ $('#successModal').modal('show'); }); </script>
     <%	} %>
+    
+     <% if (request.getAttribute("failureFeedback") != null){ %>
+    	<script type="text/javascript"> $(document).ready(function(){ $('#failureModal').modal('show'); }); </script>
+     <%	} %>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>

@@ -32,28 +32,32 @@
     <div class="row justify-content-left ">
       <div class="col-2 p-3">
         <p>Select an operation:</p>
-          <form class="form-group" action="addUserPage">
+          <form class="form-group" action="addUser">
             <button type="submit" class="btn btn-primary">Add User</button>
           </form>
           <br>
-          <form class="form-group" action="addSeasonPage">
+          <form class="form-group" action="addSeason">
             <button type="submit" class="btn btn-primary">Add Season</button>
           </form>
           <br>
-          <form class="form-group" action="addDivisionPage">
+          <form class="form-group" action="addDivision">
             <button type="submit" class="btn btn-primary">Add Division</button>
           </form>
           <br>
-          <form class="form-group" action="addLeaguePage">
+          <form class="form-group" action="addLeague">
             <button type="submit" class="btn btn-primary">Add League</button>
           </form>
           <br>
-          <form class="form-group" action="addClubPage">
+          <form class="form-group" action="addClub">
             <button type="submit" class="btn btn-primary">Add Club</button>
           </form>
           <br>
-          <form class="form-group" action="addTeamPage">
+          <form class="form-group" action="addTeam">
             <button type="submit" class="btn btn-primary">Add Team</button>
+          </form>
+          <br>
+          <form class="form-group" action="addTeamToLeague">
+            <button type="submit" class="btn btn-primary">Add Teams to League</button>
           </form>
         </div>
       </div>

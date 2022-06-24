@@ -35,9 +35,10 @@ public class SystemUser {
 	public SystemUser() {	
 		super();
 	}
-
-	public SystemUser(String uname, String upass, UserRole urole) {
+	
+	public SystemUser(int uid, String uname, String upass, UserRole urole) {
 		super();
+		this.uid = uid;
 		this.uname = uname;
 		this.upass = upass;
 		this.urole = urole;

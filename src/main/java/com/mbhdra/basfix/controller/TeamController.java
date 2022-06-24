@@ -2,7 +2,6 @@ package com.mbhdra.basfix.controller;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.mbhdra.basfix.model.Club;
@@ -40,29 +38,13 @@ public class TeamController {
 	@Autowired
 	private GenderService genderService;
 	
-	@RequestMapping("addTeamPage")
-	public ModelAndView openAddTeamPage() {
-		
-		ModelAndView mv = new ModelAndView();
-		List<Club> clubs = clubService.findAllClubs();
-		List<Division> divisions = divisionService.findAllDivisions();
-		List<Gender> genders = genderService.findAllGenders();
-		mv.addObject("clubs", clubs);
-		mv.addObject("divisions", divisions);
-		mv.addObject("genders", genders);
-		mv.setViewName("addTeamPage");
-		
-		return mv;
-		
-	}
-	
 	// Add new team to the system
 	@RequestMapping(value="addTeam", method=RequestMethod.POST)
-	public RedirectView addTeamPost (HttpServletRequest req, RedirectAttributes ra){
+	public RedirectView addTeamPost (HttpServletRequest req, RedirectAttributes ra) {
 			
 		RedirectView rv = new RedirectView("addTeam", true);
 		teamService.addTeam(req, new Team());
-		ra.addFlashAttribute("feedback", "Team created.");
+		ra.addFlashAttribute("feedback", "Team added successfully.");
 		
 		return rv;
 		
@@ -72,13 +54,6 @@ public class TeamController {
 	@RequestMapping(value="addTeam", method=RequestMethod.GET)
 	public ModelAndView addTeam (HttpServletRequest req) {
 		
-		Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(req);
-		String feedback = null;
-					
-		if (inputFlashMap != null) {
-			feedback = (String)inputFlashMap.get("feedback");
-		}
-		
 		ModelAndView mv = new ModelAndView();
 		List<Club> clubs = clubService.findAllClubs();
 		List<Division> divisions = divisionService.findAllDivisions();
@@ -86,7 +61,6 @@ public class TeamController {
 		mv.addObject("clubs", clubs);
 		mv.addObject("divisions", divisions);
 		mv.addObject("genders", genders);
-		mv.addObject("feedback", feedback);
 		mv.setViewName("addTeamPage");
 		
 		return mv;
@@ -98,7 +72,6 @@ public class TeamController {
 		
 		RedirectView rv = new RedirectView("addTeam", true);
 		
-		// In case a team exist with the same team name
 		if (ex.getSQLState().equalsIgnoreCase("23505")) {
 			ra.addFlashAttribute("feedback", "A team exists with same club, division, and gender. Please add a team with different information.");
 		}

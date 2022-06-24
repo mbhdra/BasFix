@@ -16,7 +16,7 @@ import com.mbhdra.basfix.model.Season;
 public class SeasonService {
 	
 	@Autowired
-	private SeasonDao dao;
+	private SeasonDao seasonDao;
 	
 	public void addSeason(HttpServletRequest req, Season season) throws InvalidSeasonException {
 		
@@ -30,19 +30,19 @@ public class SeasonService {
 		
 		seasonName = startingYear + "-" + endingYear + " Season";
 		season.setseasonName(seasonName);
-		dao.save(season);
+		seasonDao.save(season);
 		
 	}
 	
 	public List<Season> findAllSeasons() {
 		
-		Iterable<Season> seasons =  dao.findAll();
-		List<Season> seasonsList = new ArrayList<Season>();
+		Iterable<Season> seasons =  seasonDao.findAll();
+		List<Season> seasonList = new ArrayList<Season>();
 		
 		for (Season s : seasons)
-			seasonsList.add(s);
+			seasonList.add(s);
 		
-		return seasonsList;
+		return seasonList;
 		
 	}
 }

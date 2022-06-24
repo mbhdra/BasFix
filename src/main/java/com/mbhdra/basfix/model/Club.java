@@ -23,8 +23,9 @@ public class Club {
 		super();
 	}
 
-	public Club(String clubName) {
+	public Club(int clubId, String clubName) {
 		super();
+		this.clubId = clubId;
 		this.clubName = clubName;
 	}
 

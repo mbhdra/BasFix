@@ -1,7 +1,6 @@
 package com.mbhdra.basfix.controller;
 
 import java.sql.SQLException;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.mbhdra.basfix.exception.InvalidSeasonException;
@@ -25,19 +23,13 @@ public class SeasonController {
 	@Autowired
 	private SeasonService seasonService;
 	
-	@RequestMapping("addSeasonPage")
-	public String openAddSeasonPage() {
-		
-		return "addSeasonPage";
-		
-	}
-	
+	// Add new season to the system
 	@RequestMapping(value="addSeason", method=RequestMethod.POST)
 	public RedirectView addSeasonPost (HttpServletRequest req, RedirectAttributes ra) throws InvalidSeasonException {
 		
 		RedirectView rv = new RedirectView("addSeason", true);
 		seasonService.addSeason(req, new Season());
-		ra.addFlashAttribute("feedback", "Season created.");
+		ra.addFlashAttribute("feedback", "Season added successfully.");
 		
 		return rv;
 		
@@ -47,15 +39,7 @@ public class SeasonController {
 	@RequestMapping(value="addSeason", method=RequestMethod.GET)
 	public ModelAndView addSeason (HttpServletRequest req) {
 		
-		Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(req);
-		String feedback = null;
-					
-		if (inputFlashMap != null) {
-			feedback = (String)inputFlashMap.get("feedback");
-		}
-		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("feedback", feedback);
 		mv.setViewName("addSeasonPage");
 			
 		return mv;
@@ -67,7 +51,6 @@ public class SeasonController {
 		
 		RedirectView rv = new RedirectView("addSeason", true);
 		
-		// In case a season exist with the same name
 		if (ex.getSQLState().equalsIgnoreCase("23505")) {
 			ra.addFlashAttribute("feedback", "A season exists with same starting and ending years. Please add a season with different starting and ending years.");
 		}

@@ -1,7 +1,6 @@
 package com.mbhdra.basfix.controller;
 
 import java.sql.SQLException;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.mbhdra.basfix.model.Division;
@@ -24,20 +22,13 @@ public class DivisionController {
 	@Autowired
 	DivisionService divisionService;
 	
-	@RequestMapping("addDivisionPage")
-	public String openAddDivisionPage() {
-		
-		return "addDivisionPage";
-		
-	}
-	
 	// Add new division to the system
 	@RequestMapping(value="addDivision", method=RequestMethod.POST)
 	public RedirectView addDivisionPost (Division division, RedirectAttributes ra) {
 
 		RedirectView rv = new RedirectView("addDivision", true);
 		divisionService.addDivision(division);
-		ra.addFlashAttribute("feedback", "Division created.");
+		ra.addFlashAttribute("feedback", "Division added successfully.");
 		
 		return rv;
 		
@@ -47,15 +38,7 @@ public class DivisionController {
 	@RequestMapping(value="addDivision", method=RequestMethod.GET)
 	public ModelAndView addDivision (HttpServletRequest req) {
 		
-		Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(req);
-		String feedback = null;
-					
-		if (inputFlashMap != null) {
-			feedback = (String)inputFlashMap.get("feedback");
-		}
-		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("feedback", feedback);
 		mv.setViewName("addDivisionPage");
 			
 		return mv;
@@ -67,7 +50,6 @@ public class DivisionController {
 		
 		RedirectView rv = new RedirectView("addDivision", true);
 		
-		// In case a division exist with the same division name
 		if (ex.getSQLState().equalsIgnoreCase("23505")) {
 			ra.addFlashAttribute("feedback", "A division exists with same name. Please add a division with different name.");
 		}

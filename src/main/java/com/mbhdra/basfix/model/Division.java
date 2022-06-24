@@ -22,9 +22,10 @@ public class Division {
 	public Division() {
 		super();
 	}
-
-	public Division(String divisionName) {
+	
+	public Division(int divisionId, String divisionName) {
 		super();
+		this.divisionId = divisionId;
 		this.divisionName = divisionName;
 	}
 

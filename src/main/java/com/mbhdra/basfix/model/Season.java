@@ -22,9 +22,10 @@ public class Season {
 	public Season() {	
 		super();
 	}
-
-	public Season(String seasonName) {
+	
+	public Season(int seasonId, String seasonName) {
 		super();
+		this.seasonId = seasonId;
 		this.seasonName = seasonName;
 	}
 

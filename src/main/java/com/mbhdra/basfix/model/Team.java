@@ -43,8 +43,9 @@ public class Team {
 		super();
 	}
 
-	public Team(String teamName, Club club, Division division, Gender gender) {
+	public Team(int teamId, String teamName, Club club, Division division, Gender gender) {
 		super();
+		this.teamId = teamId;
 		this.teamName = teamName;
 		this.club = club;
 		this.division = division;
@@ -95,5 +96,5 @@ public class Team {
 	public String toString() {
 		return "Team [teamId=" + teamId + ", teamName=" + teamName + ", club=" + club + ", division=" + division
 				+ ", gender=" + gender + "]";
-	}	
+	}
 }

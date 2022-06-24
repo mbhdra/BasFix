@@ -7,5 +7,5 @@ import com.mbhdra.basfix.model.Team;
 
 @Repository
 public interface TeamDao extends CrudRepository<Team, Integer> {
-
+	
 }

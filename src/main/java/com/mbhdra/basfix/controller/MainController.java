@@ -52,13 +52,6 @@ public class MainController {
 		
 	}
 	
-	@RequestMapping("logout")
-	public String logoutPage() {
-		
-		return "logout";
-		
-	}
-	
 	// handle login failure
 	@RequestMapping(value="loginError", method=RequestMethod.POST)
 	public RedirectView loginError(RedirectAttributes ra) {

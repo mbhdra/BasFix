@@ -15,7 +15,7 @@ public class ClubService {
 	@Autowired
 	private ClubDao clubDao;
 	
-	public void addClub(Club club)  {
+	public void addClub(Club club) {
 		
 		// Capitalize each word of the club name
 		String finalClubName = "";

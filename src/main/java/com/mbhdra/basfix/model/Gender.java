@@ -23,8 +23,9 @@ public class Gender {
 		super();
 	}
 	
-	public Gender(String genderName) {
+	public Gender(int genderId, String genderName) {
 		super();
+		this.genderId = genderId;
 		this.genderName = genderName;
 	}
 
