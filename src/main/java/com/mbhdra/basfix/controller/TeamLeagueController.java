@@ -44,7 +44,7 @@ public class TeamLeagueController {
 	
 	// PRG pattern completion to prevent double form submission
 	@RequestMapping(value="addTeamToLeague", method=RequestMethod.GET)
-	public ModelAndView addTeamToLeague() {
+	public ModelAndView addTeamToLeague () {
 		
 		ModelAndView mv = new ModelAndView();
 		List<League> leagues = leagueService.findAllLeagues();
@@ -57,7 +57,7 @@ public class TeamLeagueController {
 	
 	// League Selection
 	@RequestMapping(value="selectLeague", method=RequestMethod.POST)
-	public RedirectView selectLeaguePost(@RequestParam League league, RedirectAttributes ra) throws ServletException, IOException, NoAvailableTeamsException {
+	public RedirectView selectLeaguePost (@RequestParam League league, RedirectAttributes ra) throws ServletException, IOException, NoAvailableTeamsException {
 			
 		RedirectView rv = new RedirectView("selectLeague", true);
 		ArrayList<Team> teams = new ArrayList<Team>();
@@ -70,7 +70,7 @@ public class TeamLeagueController {
 	
 	// PRG pattern completion to prevent double form submission
 	@RequestMapping(value="selectLeague", method=RequestMethod.GET)
-	public ModelAndView selectLeague() {
+	public ModelAndView selectLeague () {
 		
 		ModelAndView mv = new ModelAndView();
 		List<League> leagues = leagueService.findAllLeagues();
@@ -83,7 +83,7 @@ public class TeamLeagueController {
 	
 	// At least one team must exist that is suitable to the given league (with same division and gender).
 	@ExceptionHandler({NoAvailableTeamsException.class})
-	public RedirectView noAvailableLeague(NoAvailableTeamsException ex, RedirectAttributes ra) {
+	public RedirectView noAvailableLeague (NoAvailableTeamsException ex, RedirectAttributes ra) {
 		
 		RedirectView rv = new RedirectView("addTeamToLeague", true);
 		ra.addFlashAttribute("failureFeedback", ex.getMessage());

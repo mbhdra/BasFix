@@ -3,8 +3,6 @@ package com.mbhdra.basfix.controller;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -42,7 +40,7 @@ public class SystemUserController {
 	
 	// PRG pattern completion to prevent double form submission
 	@RequestMapping(value="addUser", method=RequestMethod.GET)
-	public ModelAndView addUser (HttpServletRequest req) {
+	public ModelAndView addUser () {
 		
 		ModelAndView mv = new ModelAndView();
 		List<UserRole> userRoles = userRoleService.findAllUserRoles();
@@ -54,7 +52,7 @@ public class SystemUserController {
 	}
 	
 	@ExceptionHandler({SQLException.class})
-	public RedirectView databaseError(SQLException ex, RedirectAttributes ra) {
+	public RedirectView databaseError (SQLException ex, RedirectAttributes ra) {
 		
 		RedirectView rv = new RedirectView("addUser", true);
 		

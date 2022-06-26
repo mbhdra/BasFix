@@ -2,8 +2,6 @@ package com.mbhdra.basfix.controller;
 
 import java.sql.SQLException;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -36,7 +34,7 @@ public class ClubController {
 	
 	// PRG pattern completion to prevent double form submission
 	@RequestMapping(value="addClub", method=RequestMethod.GET)
-	public ModelAndView addclub (HttpServletRequest req) {
+	public ModelAndView addclub () {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("addClubPage");
@@ -46,7 +44,7 @@ public class ClubController {
 	}
 	
 	@ExceptionHandler({SQLException.class})
-	public RedirectView databaseError(SQLException ex, RedirectAttributes ra) {
+	public RedirectView databaseError (SQLException ex, RedirectAttributes ra) {
 		
 		RedirectView rv = new RedirectView("addClub", true);
 		

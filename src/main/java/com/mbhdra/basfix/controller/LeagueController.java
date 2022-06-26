@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,7 +40,7 @@ public class LeagueController {
 	
 	// Add new league to the system
 	@RequestMapping(value="addLeague", method=RequestMethod.POST)
-	public RedirectView addLeaguePost (HttpServletRequest req, RedirectAttributes ra, HttpSession session) {
+	public RedirectView addLeaguePost (HttpServletRequest req, RedirectAttributes ra) {
 			
 		RedirectView rv = new RedirectView("addLeague", true);
 		leagueService.addLeague(req, new League());
@@ -53,7 +52,7 @@ public class LeagueController {
 	
 	// PRG pattern completion to prevent double form submission
 	@RequestMapping(value="addLeague", method=RequestMethod.GET)
-	public ModelAndView addLeague() {
+	public ModelAndView addLeague () {
 		
 		ModelAndView mv = new ModelAndView();
 		List<Season> seasons = seasonService.findAllSeasons();
@@ -69,7 +68,7 @@ public class LeagueController {
 	}
 	
 	@ExceptionHandler({SQLException.class})
-	public RedirectView databaseError(SQLException ex, RedirectAttributes ra) {
+	public RedirectView databaseError (SQLException ex, RedirectAttributes ra) {
 		
 		RedirectView rv = new RedirectView("addLeague", true);
 		

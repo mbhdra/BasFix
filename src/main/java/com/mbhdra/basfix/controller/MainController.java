@@ -22,7 +22,7 @@ import org.springframework.web.servlet.view.RedirectView;
 public class MainController {
 
 	@RequestMapping("/")
-	public String home() {
+	public String home () {
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
@@ -34,7 +34,7 @@ public class MainController {
 	}
 
 	@RequestMapping("login")
-	public String loginPage() {
+	public String loginPage () {
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
@@ -46,7 +46,7 @@ public class MainController {
 	}
 	
 	@RequestMapping("welcome")
-	public String welcomePage() {
+	public String welcomePage () {
 		
 		return "welcomePage";
 		
@@ -54,7 +54,7 @@ public class MainController {
 	
 	// handle login failure
 	@RequestMapping(value="loginError", method=RequestMethod.POST)
-	public RedirectView loginError(RedirectAttributes ra) {
+	public RedirectView loginError (RedirectAttributes ra) {
 		
 		RedirectView rv = new RedirectView("loginError", true);
 		ra.addFlashAttribute("feedback", "Login failed. Check your credentials!");

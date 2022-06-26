@@ -37,7 +37,7 @@ public class SeasonController {
 	
 	// PRG pattern completion to prevent double form submission
 	@RequestMapping(value="addSeason", method=RequestMethod.GET)
-	public ModelAndView addSeason (HttpServletRequest req) {
+	public ModelAndView addSeason () {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("addSeasonPage");
@@ -47,7 +47,7 @@ public class SeasonController {
 	}
 	
 	@ExceptionHandler({SQLException.class})
-	public RedirectView databaseError(SQLException ex, RedirectAttributes ra) {
+	public RedirectView databaseError (SQLException ex, RedirectAttributes ra) {
 		
 		RedirectView rv = new RedirectView("addSeason", true);
 		

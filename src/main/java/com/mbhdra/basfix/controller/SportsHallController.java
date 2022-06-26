@@ -11,33 +11,33 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.mbhdra.basfix.model.Division;
-import com.mbhdra.basfix.service.DivisionService;
+import com.mbhdra.basfix.model.SportsHall;
+import com.mbhdra.basfix.service.SportsHallService;
 
 @Controller
-public class DivisionController {
-	
-	@Autowired
-	DivisionService divisionService;
-	
-	// Add new division to the system
-	@RequestMapping(value="addDivision", method=RequestMethod.POST)
-	public RedirectView addDivisionPost (Division division, RedirectAttributes ra) {
+public class SportsHallController {
 
-		RedirectView rv = new RedirectView("addDivision", true);
-		divisionService.addDivision(division);
-		ra.addFlashAttribute("feedback", "Division added successfully.");
+	@Autowired
+	SportsHallService sportsHallService;
+	
+	// Add new sports hall to the system
+	@RequestMapping(value="addSportsHall", method=RequestMethod.POST)
+	public RedirectView addSportsHall (SportsHall sportsHall, RedirectAttributes ra) {
+
+		RedirectView rv = new RedirectView("addSportsHall", true);
+		sportsHallService.addSportsHall(sportsHall);
+		ra.addFlashAttribute("feedback", "Sports hall added successfully.");
 		
 		return rv;
 		
 	}
 	
 	// PRG pattern completion to prevent double form submission
-	@RequestMapping(value="addDivision", method=RequestMethod.GET)
-	public ModelAndView addDivision () {
+	@RequestMapping(value="addSportsHall", method=RequestMethod.GET)
+	public ModelAndView addSportsHall () {
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("addDivisionPage");
+		mv.setViewName("addSportsHallPage");
 			
 		return mv;
 		
@@ -46,10 +46,10 @@ public class DivisionController {
 	@ExceptionHandler({SQLException.class})
 	public RedirectView databaseError (SQLException ex, RedirectAttributes ra) {
 		
-		RedirectView rv = new RedirectView("addDivision", true);
+		RedirectView rv = new RedirectView("addSportsHall", true);
 		
 		if (ex.getSQLState().equalsIgnoreCase("23505")) {
-			ra.addFlashAttribute("feedback", "A division exists with same name. Please add a division with different name.");
+			ra.addFlashAttribute("feedback", "A sports hall exists with same name. Please add a sports hall with different name.");
 		}
 		
 		return rv;

@@ -52,7 +52,7 @@ public class TeamController {
 	
 	// PRG pattern completion to prevent double form submission
 	@RequestMapping(value="addTeam", method=RequestMethod.GET)
-	public ModelAndView addTeam (HttpServletRequest req) {
+	public ModelAndView addTeam () {
 		
 		ModelAndView mv = new ModelAndView();
 		List<Club> clubs = clubService.findAllClubs();
@@ -68,7 +68,7 @@ public class TeamController {
 	}
 	
 	@ExceptionHandler({SQLException.class})
-	public RedirectView databaseError(SQLException ex, RedirectAttributes ra) {
+	public RedirectView databaseError (SQLException ex, RedirectAttributes ra) {
 		
 		RedirectView rv = new RedirectView("addTeam", true);
 		

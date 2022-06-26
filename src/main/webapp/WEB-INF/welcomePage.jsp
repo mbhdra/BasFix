@@ -56,6 +56,10 @@
             <button type="submit" class="btn btn-primary">Add Team</button>
           </form>
           <br>
+          <form class="form-group" action="addSportsHall">
+            <button type="submit" class="btn btn-primary">Add Sports Hall</button>
+          </form>
+          <br>
           <form class="form-group" action="addTeamToLeague">
             <button type="submit" class="btn btn-primary">Add Teams to League</button>
           </form>
