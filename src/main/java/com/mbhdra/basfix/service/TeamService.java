@@ -41,8 +41,8 @@ public class TeamService {
 		team.setDivision(divisionDao.findById(divisionId).get());
 		team.setGender(genderDao.findById(genderId).get());
 		
-		teamName = team.getClub().getClubName() + " " + team.getDivision().getDivisionName() + " " + 
-				team.getGender().getGenderName().substring(0,1).toUpperCase() + team.getGender().getGenderName().substring(1) + " Team";
+		teamName = team.getClub().getClubName() + " " + team.getGender().getGenderName().substring(0,1).toUpperCase() + team.getGender().getGenderName().substring(1) + 
+				   " "+ team.getDivision().getDivisionName() + " League Team";
 		team.setTeamName(teamName);
 		teamDao.save(team);
 		

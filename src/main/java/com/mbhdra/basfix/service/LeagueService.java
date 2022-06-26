@@ -41,8 +41,8 @@ public class LeagueService {
 		league.setDivision(divisionDao.findById(divisionId).get());
 		league.setGender(genderDao.findById(genderId).get());
 		
-		leagueName = league.getSeason().getSeasonName() + " " + league.getDivision().getDivisionName() + " " + 
-					 league.getGender().getGenderName().substring(0,1).toUpperCase() + league.getGender().getGenderName().substring(1) + " League";
+		leagueName = league.getSeason().getSeasonName() + " " + league.getGender().getGenderName().substring(0,1).toUpperCase() + league.getGender().getGenderName().substring(1) +
+				" " + league.getDivision().getDivisionName() + " League";
 		league.setLeagueName(leagueName);
 		leagueDao.save(league);
 		
