@@ -49,7 +49,9 @@ public class TeamLeagueController {
 	public ModelAndView addTeamToLeague() {
 		
 		ModelAndView mv = new ModelAndView();
-		List<League> leagues = leagueService.findAllLeagues();
+		List<League> leagues = new ArrayList<League>();
+		
+		leagueService.findAllLeagues(leagues);
 		
 		mv.addObject("leagues", leagues);
 		mv.setViewName("addTeamToLeaguePage");
@@ -77,7 +79,9 @@ public class TeamLeagueController {
 	public ModelAndView selectLeague() {
 		
 		ModelAndView mv = new ModelAndView();
-		List<League> leagues = leagueService.findAllLeagues();
+		List<League> leagues = new ArrayList<League>();
+		
+		leagueService.findAllLeagues(leagues);
 		
 		mv.addObject("leagues", leagues);
 		mv.setViewName("addTeamToLeaguePage");

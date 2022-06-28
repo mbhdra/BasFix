@@ -34,9 +34,7 @@ public class SportsHallService {
 	
 	public void findAllSportHalls(List<SportsHall> sportsHallList) {
 		
-		Iterable<SportsHall> sportsHalls =  sportsHallDao.findAll();
-		
-		for (SportsHall s : sportsHalls)
+		for (SportsHall s : sportsHallDao.findAll())
 			sportsHallList.add(s);
 		
 	}

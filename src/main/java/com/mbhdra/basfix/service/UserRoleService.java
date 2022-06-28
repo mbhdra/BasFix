@@ -1,6 +1,5 @@
 package com.mbhdra.basfix.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +14,10 @@ public class UserRoleService {
 	@Autowired
 	private UserRoleDao userRoleDao;
 	
-	public List<UserRole> findAllUserRoles() {
+	public void findAllUserRoles(List<UserRole> userRoles) {
 		
-		Iterable<UserRole> userRoles =  userRoleDao.findAll();
-		List<UserRole> userRoleList = new ArrayList<UserRole>();
-		
-		for (UserRole r : userRoles)
-			userRoleList.add(r);
-		
-		return userRoleList;
+		for (UserRole u : userRoleDao.findAll())
+			userRoles.add(u);
 		
 	}
 }

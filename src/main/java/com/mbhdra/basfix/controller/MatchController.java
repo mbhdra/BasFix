@@ -65,7 +65,9 @@ public class MatchController {
 	public ModelAndView addMatch() {
 		
 		ModelAndView mv = new ModelAndView();
-		List<League> leagues = leagueService.findAllLeagues();
+		List<League> leagues = new ArrayList<League>();
+				
+		leagueService.findAllLeagues(leagues);
 		
 		mv.addObject("leagues", leagues);
 		mv.setViewName("addMatchPage");
@@ -97,7 +99,9 @@ public class MatchController {
 	public ModelAndView selectLeagueToAddMatch() {
 		
 		ModelAndView mv = new ModelAndView();
-		List<League> leagues = leagueService.findAllLeagues();
+		List<League> leagues = new ArrayList<League>();
+				
+		leagueService.findAllLeagues(leagues);
 		
 		mv.addObject("leagues", leagues);
 		mv.setViewName("addMatchPage");

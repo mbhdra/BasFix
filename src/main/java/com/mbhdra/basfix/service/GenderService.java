@@ -1,6 +1,5 @@
 package com.mbhdra.basfix.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,17 +12,12 @@ import com.mbhdra.basfix.model.Gender;
 public class GenderService {
 	
 	@Autowired
-	GenderDao genderDao;
+	private GenderDao genderDao;
 	
-	public List<Gender> findAllGenders() {
+	public void findAllGenders(List<Gender> genders) {
 		
-		Iterable<Gender> genders =  genderDao.findAll();
-		List<Gender> genderList = new ArrayList<Gender>();
-		
-		for (Gender g : genders)
-			genderList.add(g);
-		
-		return genderList;
+		for (Gender g : genderDao.findAll())
+			genders.add(g);
 		
 	}
 }

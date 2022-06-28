@@ -1,6 +1,5 @@
 package com.mbhdra.basfix.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,15 +32,10 @@ public class DivisionService {
 		
 	}
 	
-	public List<Division> findAllDivisions() {
+	public void findAllDivisions(List<Division> divisions) {
 		
-		Iterable<Division> divisions =  divisionDao.findAll();
-		List<Division> divisionList = new ArrayList<Division>();
-		
-		for (Division d : divisions)
-			divisionList.add(d);
-		
-		return divisionList;
+		for (Division d : divisionDao.findAll())
+			divisions.add(d);
 		
 	}
 }

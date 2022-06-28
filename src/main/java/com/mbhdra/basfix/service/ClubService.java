@@ -1,6 +1,5 @@
 package com.mbhdra.basfix.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,15 +32,10 @@ public class ClubService {
 		
 	}
 	
-	public List<Club> findAllClubs() {
+	public void findAllClubs(List<Club> clubs) {
 		
-		Iterable<Club> clubs =  clubDao.findAll();
-		List<Club> clubList = new ArrayList<Club>();
-		
-		for (Club c : clubs)
-			clubList.add(c);
-		
-		return clubList;
+		for (Club c : clubDao.findAll())
+			clubs.add(c);
 		
 	}
 }

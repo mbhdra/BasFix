@@ -1,6 +1,5 @@
 package com.mbhdra.basfix.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,15 +33,10 @@ public class SeasonService {
 		
 	}
 	
-	public List<Season> findAllSeasons() {
+	public void findAllSeasons(List<Season> seasons) {
 		
-		Iterable<Season> seasons =  seasonDao.findAll();
-		List<Season> seasonList = new ArrayList<Season>();
-		
-		for (Season s : seasons)
-			seasonList.add(s);
-		
-		return seasonList;
+		for (Season s : seasonDao.findAll())
+			seasons.add(s);
 		
 	}
 }

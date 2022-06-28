@@ -1,6 +1,5 @@
 package com.mbhdra.basfix.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -50,15 +49,10 @@ public class LeagueService {
 		
 	}
 	
-	public List<League> findAllLeagues() {
+	public void findAllLeagues(List<League> leagues) {
 		
-		Iterable<League> leagues =  leagueDao.findAll();
-		List<League> leagueList = new ArrayList<League>();
-		
-		for (League l : leagues)
-			leagueList.add(l);
-		
-		return leagueList;
+		for (League l : leagueDao.findAll())
+			leagues.add(l);
 		
 	}
 }

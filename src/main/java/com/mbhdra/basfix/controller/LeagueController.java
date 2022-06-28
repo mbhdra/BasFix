@@ -1,6 +1,7 @@
 package com.mbhdra.basfix.controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -56,9 +57,13 @@ public class LeagueController {
 	public ModelAndView addLeague() {
 		
 		ModelAndView mv = new ModelAndView();
-		List<Season> seasons = seasonService.findAllSeasons();
-		List<Division> divisions = divisionService.findAllDivisions();
-		List<Gender> genders = genderService.findAllGenders();
+		List<Season> seasons = new ArrayList<Season>();
+		List<Division> divisions = new ArrayList<Division>();
+		List<Gender> genders = new ArrayList<Gender>();
+		
+		seasonService.findAllSeasons(seasons);
+		divisionService.findAllDivisions(divisions);
+		genderService.findAllGenders(genders);
 		
 		mv.addObject("seasons", seasons);
 		mv.addObject("divisions", divisions);

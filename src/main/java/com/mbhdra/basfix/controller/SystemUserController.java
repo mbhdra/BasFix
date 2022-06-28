@@ -1,6 +1,7 @@
 package com.mbhdra.basfix.controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,8 @@ public class SystemUserController {
 	public ModelAndView addUser() {
 		
 		ModelAndView mv = new ModelAndView();
-		List<UserRole> userRoles = userRoleService.findAllUserRoles();
+		List<UserRole> userRoles = new ArrayList<UserRole>();
+		userRoleService.findAllUserRoles(userRoles);
 		
 		mv.addObject("userRoles", userRoles);
 		mv.setViewName("addUserPage");
