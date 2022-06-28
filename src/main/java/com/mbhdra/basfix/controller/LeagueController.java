@@ -40,9 +40,10 @@ public class LeagueController {
 	
 	// Add new league to the system
 	@RequestMapping(value="addLeague", method=RequestMethod.POST)
-	public RedirectView addLeaguePost (HttpServletRequest req, RedirectAttributes ra) {
+	public RedirectView addLeaguePost(HttpServletRequest req, RedirectAttributes ra) {
 			
 		RedirectView rv = new RedirectView("addLeague", true);
+		
 		leagueService.addLeague(req, new League());
 		ra.addFlashAttribute("successFeedback", "League added successfully.");
 		
@@ -52,12 +53,13 @@ public class LeagueController {
 	
 	// PRG pattern completion to prevent double form submission
 	@RequestMapping(value="addLeague", method=RequestMethod.GET)
-	public ModelAndView addLeague () {
+	public ModelAndView addLeague() {
 		
 		ModelAndView mv = new ModelAndView();
 		List<Season> seasons = seasonService.findAllSeasons();
 		List<Division> divisions = divisionService.findAllDivisions();
 		List<Gender> genders = genderService.findAllGenders();
+		
 		mv.addObject("seasons", seasons);
 		mv.addObject("divisions", divisions);
 		mv.addObject("genders", genders);
@@ -68,7 +70,7 @@ public class LeagueController {
 	}
 	
 	@ExceptionHandler({SQLException.class})
-	public RedirectView databaseError (SQLException ex, RedirectAttributes ra) {
+	public RedirectView databaseError(SQLException ex, RedirectAttributes ra) {
 		
 		RedirectView rv = new RedirectView("addLeague", true);
 		

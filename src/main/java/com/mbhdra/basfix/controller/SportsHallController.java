@@ -22,9 +22,10 @@ public class SportsHallController {
 	
 	// Add new sports hall to the system
 	@RequestMapping(value="addSportsHall", method=RequestMethod.POST)
-	public RedirectView addSportsHall (SportsHall sportsHall, RedirectAttributes ra) {
+	public RedirectView addSportsHall(SportsHall sportsHall, RedirectAttributes ra) {
 
 		RedirectView rv = new RedirectView("addSportsHall", true);
+		
 		sportsHallService.addSportsHall(sportsHall);
 		ra.addFlashAttribute("feedback", "Sports hall added successfully.");
 		
@@ -34,9 +35,10 @@ public class SportsHallController {
 	
 	// PRG pattern completion to prevent double form submission
 	@RequestMapping(value="addSportsHall", method=RequestMethod.GET)
-	public ModelAndView addSportsHall () {
+	public ModelAndView addSportsHall() {
 		
 		ModelAndView mv = new ModelAndView();
+		
 		mv.setViewName("addSportsHallPage");
 			
 		return mv;
@@ -44,7 +46,7 @@ public class SportsHallController {
 	}
 	
 	@ExceptionHandler({SQLException.class})
-	public RedirectView databaseError (SQLException ex, RedirectAttributes ra) {
+	public RedirectView databaseError(SQLException ex, RedirectAttributes ra) {
 		
 		RedirectView rv = new RedirectView("addSportsHall", true);
 		

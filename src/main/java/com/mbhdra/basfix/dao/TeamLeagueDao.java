@@ -19,4 +19,8 @@ public interface TeamLeagueDao extends CrudRepository<TeamLeague, Integer> {
 	@Query("select t from Team t where t.division=?1 and t.gender=?2 and t not in (select tl.team from TeamLeague tl where tl.league=?3)")
 	List<Team> findNotIncludedTeamsByLeague(Division division, Gender gender, League league);
 	
+	// find all teams in the given league
+	@Query("select tl.team from TeamLeague tl where tl.league=?1")
+	List<Team> findAllTeamsByLeague(League league);
+	
 }

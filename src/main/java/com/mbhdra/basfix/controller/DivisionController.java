@@ -22,9 +22,10 @@ public class DivisionController {
 	
 	// Add new division to the system
 	@RequestMapping(value="addDivision", method=RequestMethod.POST)
-	public RedirectView addDivisionPost (Division division, RedirectAttributes ra) {
+	public RedirectView addDivisionPost(Division division, RedirectAttributes ra) {
 
 		RedirectView rv = new RedirectView("addDivision", true);
+		
 		divisionService.addDivision(division);
 		ra.addFlashAttribute("feedback", "Division added successfully.");
 		
@@ -34,9 +35,10 @@ public class DivisionController {
 	
 	// PRG pattern completion to prevent double form submission
 	@RequestMapping(value="addDivision", method=RequestMethod.GET)
-	public ModelAndView addDivision () {
+	public ModelAndView addDivision() {
 		
 		ModelAndView mv = new ModelAndView();
+		
 		mv.setViewName("addDivisionPage");
 			
 		return mv;
@@ -44,7 +46,7 @@ public class DivisionController {
 	}
 	
 	@ExceptionHandler({SQLException.class})
-	public RedirectView databaseError (SQLException ex, RedirectAttributes ra) {
+	public RedirectView databaseError(SQLException ex, RedirectAttributes ra) {
 		
 		RedirectView rv = new RedirectView("addDivision", true);
 		

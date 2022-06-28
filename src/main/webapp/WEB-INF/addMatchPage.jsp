@@ -32,7 +32,7 @@
     </nav>
 
     <br><br><br><br><br><br>
-    <form action="selectLeague" method="post">
+    <form action="selectLeagueToAddMatch" method="post">
       <div class="row justify-content-center ">
         <div class="col-4 border p-3 bg-light">
               
@@ -48,47 +48,8 @@
         </div>
       </div>
     </form>
-
-	<div class="modal fade" id="atLestOneTeamModal" tabindex="-1" aria-labelledby="atLestOneTeamModalLabel" aria-hidden="true">
-  	  <div class="modal-dialog">
-    	<div class="modal-content">
-      	  <div class="modal-header">
-        	<h5 class="modal-title" id="atLestOneTeamModalLabel">Feedback</h5>
-        	<form class="form-group" action="addTeamToLeague">
-        		<button type="submit" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        	</form>
-      	  </div>
-      	  <div class="modal-body">
-          	You must select at least 1 team!
-      	  </div>
-      	  <div class="modal-footer">
-      	  	<form class="form-group" action="addTeamToLeague">
-        	  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
-        	</form>
-      	  </div>
-    	</div>
-  	  </div>
-	</div>
-	
-	<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-  	  <div class="modal-dialog">
-    	<div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="successModalLabel">Feedback</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            ${successFeedback}
-          </div>
-          <div class="modal-footer">
-          <div class="row"></div>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
-          </div>
-    	</div>
-  	  </div>
-	</div>
-	
-	<div class="modal fade" id="failureModal" tabindex="-1" aria-labelledby="failureModalLabel" aria-hidden="true">
+    
+    <div class="modal fade" id="failureModal" tabindex="-1" aria-labelledby="failureModalLabel" aria-hidden="true">
   	  <div class="modal-dialog">
     	<div class="modal-content">
           <div class="modal-header">
@@ -105,50 +66,102 @@
   	  </div>
 	</div>
 	
+	<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  	  <div class="modal-dialog">
+    	<div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="successModalLabel">Feedback</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ${successFeedback}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+          </div>
+    	</div>
+  	  </div>
+	</div>
+	
 	<div class="modal fade" id="selectTeamsModal" tabindex="-1" aria-labelledby="selectTeamsModalLabel" aria-hidden="true">
   	  <div class="modal-dialog">
     	<div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="selectTeamsModalLabel">Select Teams</h5>
-            <form class="form-group" action="addTeamToLeague">
+            <h5 class="modal-title" id="selectTeamsModalLabel">Add Match</h5>
+            <form class="form-group" action="addMatch">
             	<button type="submit" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </form>
           </div>
           <div class="modal-body">
-            <form class="form-group" action="addTeamToLeague" method="post">
+            <form action="addMatch" method="post">
               <input type="hidden" name="league" value="${league.leagueId}">
-	          <c:forEach items="${teams}" var="team">
-          		<input type="checkbox" name="selectedTeams" value="${team.teamId}"> ${team.teamName} <br>
-          	  </c:forEach>
-          	  <br>
-              <button type="submit" class="btn btn-primary" id="addTeamButton" data-bs-dismiss="modal">Add Selected Teams</button>
+              <div class="form-group pb-3">
+                <label for="ateam">A Team:</label>
+			    <select class="form-select" name="aTeam">
+        	      <c:forEach items="${teams}" var="team">
+                    <option value="${team.teamId}">${team.teamName}</option>
+                  </c:forEach>
+                </select>
+              </div>
+              <div class="form-group pb-3">
+                <label for="ateam">B Team:</label>
+			    <select class="form-select" name="bTeam">
+        	      <c:forEach items="${teams}" var="team">
+                    <option value="${team.teamId}">${team.teamName}</option>
+                  </c:forEach>
+                </select>
+              </div>
+              <div class="form-group pb-3">
+                <label for="date">Sports Hall:</label>
+			    <select class="form-select" name="sportsHall">
+        	      <c:forEach items="${sportsHalls}" var="sportsHall">
+                    <option value="${sportsHall.sportsHallId}">${sportsHall.sportsHallName}</option>
+                  </c:forEach>
+                </select>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col form-group">
+                  <label for="date">Date:</label><br>
+			      <input type="date" name="date" required>
+                </div>
+                <div class="col form-group pb-3">
+                  <label for="time">Time:</label><br>
+			      <select id="time" name="time"></select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" id="addMatchButton">Add Match</button>
             </form>
           </div>
     	</div>
   	  </div>
 	</div>
 	
-	<script type="text/javascript">
-		$(document).ready(function () {
-    		$('#addTeamButton').click(function() {
-      			checked = $("input[type=checkbox]:checked").length;
-
-      			if(!checked){
-      				$('#atLestOneTeamModal').modal('show');
-      				return false;
-      			}
-    		});
-		});
-	</script>
 	
-	<% if (request.getAttribute("successFeedback") != null){ %>
-    	<script type="text/javascript"> $(document).ready(function(){ $('#successModal').modal('show'); }); </script>
-    <%	} %>
-    <% if (request.getAttribute("failureFeedback") != null){ %>
+	<% if (request.getAttribute("failureFeedback") != null){ %>
     	<script type="text/javascript"> $(document).ready(function(){ $('#failureModal').modal('show'); }); </script>
+    <%	} %>
+    <% if (request.getAttribute("successFeedback") != null){ %>
+    	<script type="text/javascript"> $(document).ready(function(){ $('#successModal').modal('show'); }); </script>
     <%	} %>
     <% if (request.getAttribute("league") != null){ %>
     	<script type="text/javascript"> $(document).ready(function(){ $('#selectTeamsModal').modal('show'); }); </script>
+    	<script type="text/javascript">
+
+    		function createOption(value, text) {
+            	var option = document.createElement('option');
+              	option.text = text;
+              	option.value = value;
+              	return option;
+       		}
+
+       		var hourSelect = document.getElementById('time');
+       		for(var i = 9; i <= 21; i++){
+    	   		if(i%3==0)
+              		hourSelect.add(createOption(String(i).concat(":00"), String(i).concat(":00")));
+    	   		else if(i%3==1)
+              		hourSelect.add(createOption(String(i).concat(":30"), String(i).concat(":30")));
+       		}
+       </script>
     <%	} %>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>

@@ -28,9 +28,10 @@ public class SystemUserController {
 	
 	// Add new user to the system
 	@RequestMapping(value="addUser", method=RequestMethod.POST)
-	public RedirectView addUserPost (SystemUser user, RedirectAttributes ra) {
+	public RedirectView addUserPost(SystemUser user, RedirectAttributes ra) {
 			
 		RedirectView rv = new RedirectView("addUser", true);
+		
 		systemUserservice.addUser(user);
 		ra.addFlashAttribute("feedback", "User added successfully.");
 		
@@ -40,10 +41,11 @@ public class SystemUserController {
 	
 	// PRG pattern completion to prevent double form submission
 	@RequestMapping(value="addUser", method=RequestMethod.GET)
-	public ModelAndView addUser () {
+	public ModelAndView addUser() {
 		
 		ModelAndView mv = new ModelAndView();
 		List<UserRole> userRoles = userRoleService.findAllUserRoles();
+		
 		mv.addObject("userRoles", userRoles);
 		mv.setViewName("addUserPage");
 			
@@ -52,7 +54,7 @@ public class SystemUserController {
 	}
 	
 	@ExceptionHandler({SQLException.class})
-	public RedirectView databaseError (SQLException ex, RedirectAttributes ra) {
+	public RedirectView databaseError(SQLException ex, RedirectAttributes ra) {
 		
 		RedirectView rv = new RedirectView("addUser", true);
 		

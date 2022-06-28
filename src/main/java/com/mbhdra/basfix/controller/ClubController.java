@@ -22,9 +22,10 @@ public class ClubController {
 	
 	// Add new club to the system
 	@RequestMapping(value="addClub", method=RequestMethod.POST)
-	public RedirectView addclubPost (Club club, RedirectAttributes ra) {
+	public RedirectView addclubPost(Club club, RedirectAttributes ra) {
 
 		RedirectView rv = new RedirectView("addClub", true);
+		
 		clubService.addClub(club);
 		ra.addFlashAttribute("feedback", "Club added successfully.");
 		
@@ -34,9 +35,10 @@ public class ClubController {
 	
 	// PRG pattern completion to prevent double form submission
 	@RequestMapping(value="addClub", method=RequestMethod.GET)
-	public ModelAndView addclub () {
+	public ModelAndView addclub() {
 		
 		ModelAndView mv = new ModelAndView();
+		
 		mv.setViewName("addClubPage");
 			
 		return mv;
@@ -44,7 +46,7 @@ public class ClubController {
 	}
 	
 	@ExceptionHandler({SQLException.class})
-	public RedirectView databaseError (SQLException ex, RedirectAttributes ra) {
+	public RedirectView databaseError(SQLException ex, RedirectAttributes ra) {
 		
 		RedirectView rv = new RedirectView("addClub", true);
 		

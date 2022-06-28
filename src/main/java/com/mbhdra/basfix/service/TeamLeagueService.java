@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mbhdra.basfix.dao.TeamLeagueDao;
+import com.mbhdra.basfix.exception.LessThanTwoTeamsException;
 import com.mbhdra.basfix.exception.NoAvailableTeamsException;
 import com.mbhdra.basfix.model.League;
 import com.mbhdra.basfix.model.Team;
@@ -20,8 +21,18 @@ public class TeamLeagueService {
 	public void findNotIncludedTeamsByLeague(League league, ArrayList<Team> teams) throws NoAvailableTeamsException {
 		
 		teams.addAll(teamLeagueDao.findNotIncludedTeamsByLeague(league.getDivision(), league.getGender(), league));
+		
 		if(teams.size() == 0)
 			throw new NoAvailableTeamsException();
+		
+	}
+	
+	public void findAllTeamsByLeague(League league, ArrayList<Team> teams) throws LessThanTwoTeamsException {
+		
+		teams.addAll(teamLeagueDao.findAllTeamsByLeague(league));
+		
+		if(teams.size() < 2)
+			throw new LessThanTwoTeamsException();
 		
 	}
 	

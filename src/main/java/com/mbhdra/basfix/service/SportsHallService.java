@@ -1,5 +1,7 @@
 package com.mbhdra.basfix.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,14 +19,25 @@ public class SportsHallService {
 		// Capitalize each word of the sports hall name
 		String finalsportsHallName = "";
 		String[] words = sportsHall.getSportsHallName().split(" ");
+		
 		for (String s : words) {
 			s = s.toLowerCase();
 			s = s.substring(0,1).toUpperCase() + s.substring(1);
 			finalsportsHallName = finalsportsHallName + s + " ";
 		}
+		
 		finalsportsHallName = finalsportsHallName.trim();
 		sportsHall.setSportsHallName(finalsportsHallName);
 		sportsHallDao.save(sportsHall);
+		
+	}
+	
+	public void findAllSportHalls(List<SportsHall> sportsHallList) {
+		
+		Iterable<SportsHall> sportsHalls =  sportsHallDao.findAll();
+		
+		for (SportsHall s : sportsHalls)
+			sportsHallList.add(s);
 		
 	}
 }

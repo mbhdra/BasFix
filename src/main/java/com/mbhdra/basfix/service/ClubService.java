@@ -20,11 +20,13 @@ public class ClubService {
 		// Capitalize each word of the club name
 		String finalClubName = "";
 		String[] words = club.getClubName().split(" ");
+		
 		for (String s : words) {
 			s = s.toLowerCase();
 			s = s.substring(0,1).toUpperCase() + s.substring(1);
 			finalClubName = finalClubName + s + " ";
 		}
+		
 		finalClubName = finalClubName.trim();
 		club.setClubName(finalClubName);
 		clubDao.save(club);

@@ -40,9 +40,10 @@ public class TeamController {
 	
 	// Add new team to the system
 	@RequestMapping(value="addTeam", method=RequestMethod.POST)
-	public RedirectView addTeamPost (HttpServletRequest req, RedirectAttributes ra) {
+	public RedirectView addTeamPost(HttpServletRequest req, RedirectAttributes ra) {
 			
 		RedirectView rv = new RedirectView("addTeam", true);
+		
 		teamService.addTeam(req, new Team());
 		ra.addFlashAttribute("feedback", "Team added successfully.");
 		
@@ -52,12 +53,13 @@ public class TeamController {
 	
 	// PRG pattern completion to prevent double form submission
 	@RequestMapping(value="addTeam", method=RequestMethod.GET)
-	public ModelAndView addTeam () {
+	public ModelAndView addTeam() {
 		
 		ModelAndView mv = new ModelAndView();
 		List<Club> clubs = clubService.findAllClubs();
 		List<Division> divisions = divisionService.findAllDivisions();
 		List<Gender> genders = genderService.findAllGenders();
+		
 		mv.addObject("clubs", clubs);
 		mv.addObject("divisions", divisions);
 		mv.addObject("genders", genders);
@@ -68,7 +70,7 @@ public class TeamController {
 	}
 	
 	@ExceptionHandler({SQLException.class})
-	public RedirectView databaseError (SQLException ex, RedirectAttributes ra) {
+	public RedirectView databaseError(SQLException ex, RedirectAttributes ra) {
 		
 		RedirectView rv = new RedirectView("addTeam", true);
 		

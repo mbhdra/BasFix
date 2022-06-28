@@ -1,41 +1,46 @@
-INSERT INTO user_role (role_name)
+INSERT INTO user_role(role_name)
 VALUES('admin');
-INSERT INTO user_role (role_name)
+INSERT INTO user_role(role_name)
 VALUES('user');
 
-INSERT INTO system_user (uname, upass, role_id)
+INSERT INTO system_user(uname, upass, role_id)
 VALUES('mbhdra','$2a$12$04Imudz0AEA8fOvWTttbSuj9EDo3PibOYzGqzjo7hojH/bvvthXi2', 1);
 
-INSERT INTO gender (gender_name)
+INSERT INTO gender(gender_name)
 VALUES('men');
-INSERT INTO gender (gender_name)
+INSERT INTO gender(gender_name)
 VALUES('women');
 
-INSERT INTO division (division_name)
+INSERT INTO sports_hall(sports_hall_name)
+VALUES('Ankara Arena Spor Salonu');
+INSERT INTO sports_hall(sports_hall_name)
+VALUES('Sinan Erdem Spor Salonu');
+
+INSERT INTO division(division_name)
 VALUES('U16');
-INSERT INTO division (division_name)
+INSERT INTO division(division_name)
 VALUES('U18');
-INSERT INTO division (division_name)
+INSERT INTO division(division_name)
 VALUES('Regional');
-INSERT INTO division (division_name)
+INSERT INTO division(division_name)
 VALUES('Super');
 
-INSERT INTO season (season_name)
+INSERT INTO season(season_name)
 VALUES('1994-1995 Season');
-INSERT INTO season (season_name)
+INSERT INTO season(season_name)
 VALUES('2011-2012 Season');
-INSERT INTO season (season_name)
+INSERT INTO season(season_name)
 VALUES('2021-2022 Season');
-INSERT INTO season (season_name)
+INSERT INTO season(season_name)
 VALUES('2022-2023 Season');
 
-INSERT INTO club (club_name)
+INSERT INTO club(club_name)
 VALUES('Fenerbahçe');
-INSERT INTO club (club_name)
+INSERT INTO club(club_name)
 VALUES('Anadolu Efes');
-INSERT INTO club (club_name)
+INSERT INTO club(club_name)
 VALUES('Türk Telekom');
-INSERT INTO club (club_name)
+INSERT INTO club(club_name)
 VALUES('Galatasaray');
 
 INSERT INTO league(league_name, season_id, division_id, gender_id)
@@ -173,3 +178,19 @@ INSERT INTO team(team_name, club_id, division_id, gender_id)
 VALUES('Galatasaray Men Super League Team', 4, 4, 1);
 INSERT INTO team(team_name, club_id, division_id, gender_id)
 VALUES('Galatasaray Women Super League Team', 4, 4, 2);
+
+INSERT INTO team_league(league_id, team_id)
+VALUES(1, 1);
+INSERT INTO team_league(league_id, team_id)
+VALUES(1, 9);
+INSERT INTO team_league(league_id, team_id)
+VALUES(1, 17);
+INSERT INTO team_league(league_id, team_id)
+VALUES(1, 25);
+INSERT INTO team_league(league_id, team_id)
+VALUES(2, 2);
+INSERT INTO team_league(league_id, team_id)
+VALUES(2, 10);
+
+INSERT INTO team_league(league_id, team_id)
+VALUES(32, 24);

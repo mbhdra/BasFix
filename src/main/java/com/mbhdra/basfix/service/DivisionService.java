@@ -20,11 +20,13 @@ public class DivisionService {
 		// Capitalize each word of the division name
 		String finalDivisionName = "";
 		String[] words = division.getDivisionName().split(" ");
+		
 		for (String s : words) {
 			s = s.toLowerCase();
 			s = s.substring(0,1).toUpperCase() + s.substring(1);
 			finalDivisionName = finalDivisionName + s + " ";
 		}
+		
 		finalDivisionName = finalDivisionName.trim();
 		division.setDivisionName(finalDivisionName);
 		divisionDao.save(division);

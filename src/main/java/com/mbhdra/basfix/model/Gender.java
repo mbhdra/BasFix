@@ -49,5 +49,4 @@ public class Gender {
 	public String toString() {
 		return "Gender [genderId=" + genderId + ", genderName=" + genderName + "]";
 	}
-
 }

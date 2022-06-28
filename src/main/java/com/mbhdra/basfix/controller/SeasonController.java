@@ -25,9 +25,10 @@ public class SeasonController {
 	
 	// Add new season to the system
 	@RequestMapping(value="addSeason", method=RequestMethod.POST)
-	public RedirectView addSeasonPost (HttpServletRequest req, RedirectAttributes ra) throws InvalidSeasonException {
+	public RedirectView addSeasonPost(HttpServletRequest req, RedirectAttributes ra) throws InvalidSeasonException {
 		
 		RedirectView rv = new RedirectView("addSeason", true);
+		
 		seasonService.addSeason(req, new Season());
 		ra.addFlashAttribute("feedback", "Season added successfully.");
 		
@@ -37,9 +38,10 @@ public class SeasonController {
 	
 	// PRG pattern completion to prevent double form submission
 	@RequestMapping(value="addSeason", method=RequestMethod.GET)
-	public ModelAndView addSeason () {
+	public ModelAndView addSeason() {
 		
 		ModelAndView mv = new ModelAndView();
+		
 		mv.setViewName("addSeasonPage");
 			
 		return mv;
@@ -47,7 +49,7 @@ public class SeasonController {
 	}
 	
 	@ExceptionHandler({SQLException.class})
-	public RedirectView databaseError (SQLException ex, RedirectAttributes ra) {
+	public RedirectView databaseError(SQLException ex, RedirectAttributes ra) {
 		
 		RedirectView rv = new RedirectView("addSeason", true);
 		
@@ -64,6 +66,7 @@ public class SeasonController {
 	public RedirectView invalidSeason(InvalidSeasonException ex, RedirectAttributes ra) {
 		
 		RedirectView rv = new RedirectView("addSeason", true);
+		
 		ra.addFlashAttribute("feedback", ex.getMessage());
 
 		return rv;
