@@ -18,7 +18,7 @@ import com.mbhdra.basfix.service.SportsHallService;
 public class SportsHallController {
 
 	@Autowired
-	SportsHallService sportsHallService;
+	private SportsHallService sportsHallService;
 	
 	// Add new sports hall to the system
 	@RequestMapping(value="addSportsHall", method=RequestMethod.POST)
@@ -30,7 +30,6 @@ public class SportsHallController {
 		ra.addFlashAttribute("feedback", "Sports hall added successfully.");
 		
 		return rv;
-		
 	}
 	
 	// PRG pattern completion to prevent double form submission
@@ -42,7 +41,6 @@ public class SportsHallController {
 		mv.setViewName("addSportsHallPage");
 			
 		return mv;
-		
 	}
 	
 	@ExceptionHandler({SQLException.class})
@@ -55,6 +53,5 @@ public class SportsHallController {
 		}
 		
 		return rv;
-		
 	}
 }

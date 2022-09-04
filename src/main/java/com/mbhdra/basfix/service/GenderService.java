@@ -18,6 +18,5 @@ public class GenderService {
 		
 		for (Gender g : genderDao.findAll())
 			genders.add(g);
-		
 	}
 }

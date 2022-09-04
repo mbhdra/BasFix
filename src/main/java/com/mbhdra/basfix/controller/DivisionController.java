@@ -18,7 +18,7 @@ import com.mbhdra.basfix.service.DivisionService;
 public class DivisionController {
 	
 	@Autowired
-	DivisionService divisionService;
+	private DivisionService divisionService;
 	
 	// Add new division to the system
 	@RequestMapping(value="addDivision", method=RequestMethod.POST)
@@ -29,8 +29,7 @@ public class DivisionController {
 		divisionService.addDivision(division);
 		ra.addFlashAttribute("feedback", "Division added successfully.");
 		
-		return rv;
-		
+		return rv;	
 	}
 	
 	// PRG pattern completion to prevent double form submission
@@ -41,8 +40,7 @@ public class DivisionController {
 		
 		mv.setViewName("addDivisionPage");
 			
-		return mv;
-		
+		return mv;	
 	}
 	
 	@ExceptionHandler({SQLException.class})
@@ -54,7 +52,6 @@ public class DivisionController {
 			ra.addFlashAttribute("feedback", "A division exists with same name. Please add a division with different name.");
 		}
 		
-		return rv;
-		
+		return rv;	
 	}
 }

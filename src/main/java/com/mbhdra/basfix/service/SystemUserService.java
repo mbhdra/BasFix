@@ -24,6 +24,5 @@ public class SystemUserService {
 		user.setUpass(bCryptPasswordEncoder.encode(user.getUpass()));
 		
 		systemUserDao.save(user);
-		
 	}
 }

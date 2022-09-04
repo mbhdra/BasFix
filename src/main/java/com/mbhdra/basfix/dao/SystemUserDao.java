@@ -9,5 +9,4 @@ import com.mbhdra.basfix.model.SystemUser;
 public interface SystemUserDao extends CrudRepository<SystemUser, Integer> {
 	
 	SystemUser findByUname(String uname);
-	
 }

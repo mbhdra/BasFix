@@ -49,7 +49,6 @@ public class TeamController {
 		ra.addFlashAttribute("feedback", "Team added successfully.");
 		
 		return rv;
-		
 	}
 	
 	// PRG pattern completion to prevent double form submission
@@ -71,7 +70,6 @@ public class TeamController {
 		mv.setViewName("addTeamPage");
 		
 		return mv;
-		
 	}
 	
 	@ExceptionHandler({SQLException.class})
@@ -84,6 +82,5 @@ public class TeamController {
 		}
 		
 		return rv;
-		
 	}
 }

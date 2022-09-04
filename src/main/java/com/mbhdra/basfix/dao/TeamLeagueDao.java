@@ -22,5 +22,4 @@ public interface TeamLeagueDao extends CrudRepository<TeamLeague, Integer> {
 	// find all teams in the given league
 	@Query("select tl.team from TeamLeague tl where tl.league=?1")
 	List<Team> findAllTeamsByLeague(League league);
-	
 }

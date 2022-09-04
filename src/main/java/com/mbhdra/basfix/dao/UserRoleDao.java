@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.mbhdra.basfix.model.UserRole;
 
 @Repository
-public interface UserRoleDao extends CrudRepository<UserRole, Integer>  {
+public interface UserRoleDao extends CrudRepository<UserRole, Integer> {
 
 }

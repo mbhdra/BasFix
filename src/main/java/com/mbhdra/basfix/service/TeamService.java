@@ -45,7 +45,6 @@ public class TeamService {
 				   " "+ team.getDivision().getDivisionName() + " League Team";
 		team.setTeamName(teamName);
 		teamDao.save(team);
-		
 	}
 	
 	public List<Team> findAllTeams() {
@@ -57,6 +56,5 @@ public class TeamService {
 			teamList.add(t);
 		
 		return teamList;
-		
 	}
 }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.mbhdra.basfix.model.Division;
 
 @Repository
-public interface DivisionDao extends CrudRepository<Division, Integer>{
+public interface DivisionDao extends CrudRepository<Division, Integer> {
 
 }

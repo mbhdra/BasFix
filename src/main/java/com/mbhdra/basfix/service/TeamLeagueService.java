@@ -24,7 +24,6 @@ public class TeamLeagueService {
 		
 		if(teams.size() == 0)
 			throw new NoAvailableTeamsException();
-		
 	}
 	
 	public void findAllTeamsByLeague(League league, ArrayList<Team> teams) throws LessThanTwoTeamsException {
@@ -33,7 +32,6 @@ public class TeamLeagueService {
 		
 		if(teams.size() < 2)
 			throw new LessThanTwoTeamsException();
-		
 	}
 	
 	public void addTeamsToLeague(League league, Team[] teams) {
@@ -44,7 +42,6 @@ public class TeamLeagueService {
 			teamLeague.setLeague(league);
 			teamLeague.setTeam(t);
 			teamLeagueDao.save(teamLeague);
-			
 		}
 	}
 }

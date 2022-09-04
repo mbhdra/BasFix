@@ -48,7 +48,5 @@ public class MatchService {
 		match.setTime(Time.valueOf(time));
 		
 		matchDao.save(match);
-		
 	}
-
 }

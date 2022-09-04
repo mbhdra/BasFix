@@ -18,7 +18,7 @@ import com.mbhdra.basfix.service.ClubService;
 public class ClubController {
 	
 	@Autowired
-	ClubService clubService;
+	private ClubService clubService;
 	
 	// Add new club to the system
 	@RequestMapping(value="addClub", method=RequestMethod.POST)
@@ -29,8 +29,7 @@ public class ClubController {
 		clubService.addClub(club);
 		ra.addFlashAttribute("feedback", "Club added successfully.");
 		
-		return rv;
-		
+		return rv;	
 	}
 	
 	// PRG pattern completion to prevent double form submission
@@ -41,8 +40,7 @@ public class ClubController {
 		
 		mv.setViewName("addClubPage");
 			
-		return mv;
-		
+		return mv;	
 	}
 	
 	@ExceptionHandler({SQLException.class})
@@ -54,7 +52,6 @@ public class ClubController {
 			ra.addFlashAttribute("feedback", "A club exists with same name. Please add a club with different name.");
 		}
 		
-		return rv;
-		
+		return rv;	
 	}
 }

@@ -33,7 +33,6 @@ public class SeasonController {
 		ra.addFlashAttribute("feedback", "Season added successfully.");
 		
 		return rv;
-		
 	}
 	
 	// PRG pattern completion to prevent double form submission
@@ -45,7 +44,6 @@ public class SeasonController {
 		mv.setViewName("addSeasonPage");
 			
 		return mv;
-		
 	}
 	
 	@ExceptionHandler({SQLException.class})
@@ -58,7 +56,6 @@ public class SeasonController {
 		}
 		
 		return rv;
-		
 	}
 	
 	// Ending year must be bigger than starting year and the difference between them must be 1.
@@ -70,6 +67,5 @@ public class SeasonController {
 		ra.addFlashAttribute("feedback", ex.getMessage());
 
 		return rv;
-		
 	}
 }

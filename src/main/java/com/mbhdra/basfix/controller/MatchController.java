@@ -57,7 +57,6 @@ public class MatchController {
 		ra.addFlashAttribute("successFeedback", "Match added to the league.");
 		
 		return rv;
-		
 	}
 	
 	// PRG pattern completion to prevent double form submission
@@ -73,7 +72,6 @@ public class MatchController {
 		mv.setViewName("addMatchPage");
 			
 		return mv;
-		
 	}
 	
 	// League Selection
@@ -107,7 +105,6 @@ public class MatchController {
 		mv.setViewName("addMatchPage");
 			
 		return mv;
-		
 	}
 	
 	// The team number must be at least 2 to add a match.
@@ -119,7 +116,6 @@ public class MatchController {
 		ra.addFlashAttribute("failureFeedback", ex.getMessage());
 
 		return rv;
-		
 	}
 	
 	// Two teams must be different
@@ -131,7 +127,6 @@ public class MatchController {
 		ra.addFlashAttribute("failureFeedback", ex.getMessage());
 
 		return rv;
-		
 	}
 	
 	// There cannot be a match in same sports hall, date, and time
@@ -143,7 +138,6 @@ public class MatchController {
 		ra.addFlashAttribute("failureFeedback", ex.getMessage());
 
 		return rv;
-		
 	}
 	
 	// At least one team has another match at given date
@@ -155,6 +149,5 @@ public class MatchController {
 		ra.addFlashAttribute("failureFeedback", ex.getMessage());
 
 		return rv;
-		
 	}
 }

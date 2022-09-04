@@ -46,13 +46,11 @@ public class LeagueService {
 		leagueDao.save(league);
 		
 		return league.getLeagueId();
-		
 	}
 	
 	public void findAllLeagues(List<League> leagues) {
 		
 		for (League l : leagueDao.findAll())
 			leagues.add(l);
-		
 	}
 }

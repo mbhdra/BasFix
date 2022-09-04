@@ -30,8 +30,7 @@ public class MainController {
             return "homePage";
         }
  
-        return "welcomePage";
-        
+        return "welcomePage"; 
 	}
 
 	@RequestMapping("login")
@@ -43,15 +42,13 @@ public class MainController {
             return "loginPage";
         }
         
-        return "welcomePage";
-        
+        return "welcomePage";   
 	}
 	
 	@RequestMapping("welcome")
 	public String welcomePage() {
 		
-		return "welcomePage";
-		
+		return "welcomePage";	
 	}
 	
 	// handle login failure
@@ -62,8 +59,7 @@ public class MainController {
 		
 		ra.addFlashAttribute("feedback", "Login failed. Check your credentials!");
 		
-		return rv;
-		
+		return rv;	
 	}
 	
 	// PRG pattern completion to prevent double form submission
@@ -79,7 +75,6 @@ public class MainController {
 		
 		req.setAttribute("feedback", feedback);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("login");
-		dispatcher.forward(req, res);
-		
+		dispatcher.forward(req, res);	
 	}
 }

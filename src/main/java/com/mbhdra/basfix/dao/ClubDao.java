@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.mbhdra.basfix.model.Club;
 
 @Repository
-public interface ClubDao extends CrudRepository<Club, Integer>{
+public interface ClubDao extends CrudRepository<Club, Integer> {
 
 }

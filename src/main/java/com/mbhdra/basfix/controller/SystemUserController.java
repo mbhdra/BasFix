@@ -37,7 +37,6 @@ public class SystemUserController {
 		ra.addFlashAttribute("feedback", "User added successfully.");
 		
 		return rv;
-		
 	}
 	
 	// PRG pattern completion to prevent double form submission
@@ -52,7 +51,6 @@ public class SystemUserController {
 		mv.setViewName("addUserPage");
 			
 		return mv;
-		
 	}
 	
 	@ExceptionHandler({SQLException.class})
@@ -65,6 +63,5 @@ public class SystemUserController {
 		}
 		
 		return rv;
-		
 	}
 }

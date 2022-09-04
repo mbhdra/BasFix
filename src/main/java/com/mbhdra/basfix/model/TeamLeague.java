@@ -1,4 +1,4 @@
-// Entity that represents the intermediate table between team and league entities
+// Represents the intermediate table between team and league entities
 
 package com.mbhdra.basfix.model;
 

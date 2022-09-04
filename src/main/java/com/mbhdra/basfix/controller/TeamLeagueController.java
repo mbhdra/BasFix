@@ -40,8 +40,7 @@ public class TeamLeagueController {
 		teamLeagueService.addTeamsToLeague(league, selectedTeams);
 		ra.addFlashAttribute("successFeedback", "Selected teams were added to the league.");
 		
-		return rv;
-		
+		return rv;	
 	}
 	
 	// PRG pattern completion to prevent double form submission
@@ -56,8 +55,7 @@ public class TeamLeagueController {
 		mv.addObject("leagues", leagues);
 		mv.setViewName("addTeamToLeaguePage");
 			
-		return mv;
-		
+		return mv;	
 	}
 	
 	// League Selection
@@ -87,7 +85,6 @@ public class TeamLeagueController {
 		mv.setViewName("addTeamToLeaguePage");
 			
 		return mv;
-		
 	}
 	
 	// At least one team must exist that is suitable to the given league (with same division and gender).
@@ -99,6 +96,5 @@ public class TeamLeagueController {
 		ra.addFlashAttribute("failureFeedback", ex.getMessage());
 
 		return rv;
-		
 	}
 }

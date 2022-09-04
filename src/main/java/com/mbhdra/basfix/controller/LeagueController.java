@@ -49,7 +49,6 @@ public class LeagueController {
 		ra.addFlashAttribute("successFeedback", "League added successfully.");
 		
 		return rv;
-		
 	}
 	
 	// PRG pattern completion to prevent double form submission
@@ -71,7 +70,6 @@ public class LeagueController {
 		mv.setViewName("addLeaguePage");
 			
 		return mv;
-		
 	}
 	
 	@ExceptionHandler({SQLException.class})
@@ -84,6 +82,5 @@ public class LeagueController {
 		}
 		
 		return rv;
-		
 	}
 }

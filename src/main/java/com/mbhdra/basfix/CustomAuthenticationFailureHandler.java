@@ -16,7 +16,6 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
   public void onAuthenticationFailure(HttpServletRequest req, HttpServletResponse res, AuthenticationException exception) throws IOException, ServletException {
 	  
 	  RequestDispatcher dispatcher = req.getRequestDispatcher("/loginError");
-	  dispatcher.forward(req, res);
-	  
+	  dispatcher.forward(req, res); 
   	}
 }

@@ -18,6 +18,5 @@ public class UserRoleService {
 		
 		for (UserRole u : userRoleDao.findAll())
 			userRoles.add(u);
-		
 	}
 }

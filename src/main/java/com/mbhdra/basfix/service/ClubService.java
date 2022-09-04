@@ -28,14 +28,12 @@ public class ClubService {
 		
 		finalClubName = finalClubName.trim();
 		club.setClubName(finalClubName);
-		clubDao.save(club);
-		
+		clubDao.save(club);	
 	}
 	
 	public void findAllClubs(List<Club> clubs) {
 		
 		for (Club c : clubDao.findAll())
 			clubs.add(c);
-		
 	}
 }

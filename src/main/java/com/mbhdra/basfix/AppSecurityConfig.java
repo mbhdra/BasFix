@@ -28,15 +28,13 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		provider.setUserDetailsService(service);
 		provider.setPasswordEncoder(new BCryptPasswordEncoder());
 		
-		return provider;
-		
+		return provider;	
 	}
 	
     @Bean
     public AuthenticationFailureHandler authenticationFailureHandler() {
     	
-        return new CustomAuthenticationFailureHandler();
-        
+        return new CustomAuthenticationFailureHandler();   
     }
 	
 	@Override
@@ -62,7 +60,6 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		.clearAuthentication(true)
 		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 		.logoutSuccessUrl("/")
-		.permitAll();
-		
+		.permitAll();	
 	}	
 }

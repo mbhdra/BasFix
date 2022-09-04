@@ -30,13 +30,11 @@ public class SeasonService {
 		seasonName = startingYear + "-" + endingYear + " Season";
 		season.setseasonName(seasonName);
 		seasonDao.save(season);
-		
 	}
 	
 	public void findAllSeasons(List<Season> seasons) {
 		
 		for (Season s : seasonDao.findAll())
 			seasons.add(s);
-		
 	}
 }

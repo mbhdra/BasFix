@@ -21,6 +21,7 @@ public class DivisionService {
 		String[] words = division.getDivisionName().split(" ");
 		
 		for (String s : words) {
+			
 			s = s.toLowerCase();
 			s = s.substring(0,1).toUpperCase() + s.substring(1);
 			finalDivisionName = finalDivisionName + s + " ";
@@ -29,13 +30,11 @@ public class DivisionService {
 		finalDivisionName = finalDivisionName.trim();
 		division.setDivisionName(finalDivisionName);
 		divisionDao.save(division);
-		
 	}
 	
 	public void findAllDivisions(List<Division> divisions) {
 		
 		for (Division d : divisionDao.findAll())
 			divisions.add(d);
-		
 	}
 }

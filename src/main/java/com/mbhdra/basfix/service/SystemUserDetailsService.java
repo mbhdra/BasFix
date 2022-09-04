@@ -23,7 +23,6 @@ public class SystemUserDetailsService implements UserDetailsService {
 		if (user == null)
 			throw new UsernameNotFoundException("User 404");
 		
-		return new SystemUserDetailsImpl(user);
-		
+		return new SystemUserDetailsImpl(user);	
 	}
 }

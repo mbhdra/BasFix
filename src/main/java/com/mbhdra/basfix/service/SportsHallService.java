@@ -21,6 +21,7 @@ public class SportsHallService {
 		String[] words = sportsHall.getSportsHallName().split(" ");
 		
 		for (String s : words) {
+			
 			s = s.toLowerCase();
 			s = s.substring(0,1).toUpperCase() + s.substring(1);
 			finalsportsHallName = finalsportsHallName + s + " ";
@@ -29,13 +30,11 @@ public class SportsHallService {
 		finalsportsHallName = finalsportsHallName.trim();
 		sportsHall.setSportsHallName(finalsportsHallName);
 		sportsHallDao.save(sportsHall);
-		
 	}
 	
 	public void findAllSportHalls(List<SportsHall> sportsHallList) {
 		
 		for (SportsHall s : sportsHallDao.findAll())
 			sportsHallList.add(s);
-		
 	}
 }
