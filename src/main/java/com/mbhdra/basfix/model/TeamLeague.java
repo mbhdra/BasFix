@@ -12,10 +12,8 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.stereotype.Component;
 
 @Entity
-@Component
 public class TeamLeague {
 	
 	@Id
